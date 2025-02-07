@@ -19,7 +19,7 @@
   },
   "backend": {
     "imageid": "ubuntu"
-  }
+  },
   "startup": {
     "background": "background.sh",
     "foreground": "foreground.sh"
