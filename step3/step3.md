@@ -1,3 +1,5 @@
 Check AWS Connectivity
 
-aws s3 ls{{exec}}
+
+run-:
+aws s3 ls

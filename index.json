@@ -1,0 +1,24 @@
+{
+  "title": "AWS EKS Setup",
+  "description": "A Killercoda scenario to install AWS CLI & eksctl, configure AWS, and assume a role.",
+  "difficulty": "beginner",
+  "details": {
+    "intro": {
+      "text": "intro/intro.md"
+    },
+    "steps": [
+      { "title": "Install AWS CLI & eksctl", "text": "step1/step1.md", "code": "step1/background.sh", "foreground": "step1/foreground.sh" },
+      { "title": "Set Up AWS Environment", "text": "step2/step2.md" },
+      { "title": "Verify AWS Connectivity", "text": "step3/step3.md" },
+      { "title": "Assume an IAM Role", "text": "step4/step4.md", "code": "step4/background.sh" },
+      { "title": "Use Temporary Credentials", "text": "step5/step5.md" }
+    ],
+    "finish": {
+      "text": "finish/finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
+

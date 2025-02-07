@@ -7,4 +7,4 @@ In this hands-on lab, you will learn how to:
 - Deploy and manage Kubernetes workloads on AWS.
 - Understand the key components of EKS.
 
-�� Click **Start Scenario** to begin! 🚀
+Click **Start Scenario** to begin! 
