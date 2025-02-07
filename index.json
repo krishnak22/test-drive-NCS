@@ -1,6 +1,7 @@
 {
-  "title": "AWS EKS Setup with Automated Steps",
+  "title": "AWS EKS Setup",
   "description": "A Killercoda scenario to install AWS CLI & eksctl, configure AWS, and assume a role.",
+  "difficulty": "beginner",
   "details": {
     "intro": {
       "title": "Introduction",
@@ -14,7 +15,7 @@
         "background": "step1/background.sh"
       },
       {
-        "title": "Configure AWS Environment",
+        "title": "Set Up AWS Environment",
         "text": "step2/step2.md"
       },
       {
