@@ -18,8 +18,5 @@ tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
 sudo mv /tmp/eksctl /usr/local/bin
 
-# Verify Installation
-aws --version
-eksctl version
-
-echo "Installation completed!"
+# Mark installation as done
+touch /opt/install_done
