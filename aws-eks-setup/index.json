@@ -24,7 +24,7 @@
       {
         "title": "Assume an IAM Role",
         "text": "step4/step4.md",
-        "background": "step4/background-1.sh"
+        "background": "step4/background.sh"
       },
       {
         "title": "Use Temporary Credentials",
