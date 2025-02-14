@@ -1,5 +1,5 @@
-Check AWS Connectivity
+## Verify AWS Connectivity
 
+### Click the below command to verify your aws connectivity.
 
-run-:
-aws s3 ls
+`aws sts get-caller-identity`{{exec}}
