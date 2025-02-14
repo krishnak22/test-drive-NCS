@@ -1,6 +1,6 @@
 #  Automatically Assuming an AWS Role  
 
-This step will configure your ** AWS credentials** automatically in the background **no manual input is required**.  
+This step will configure your **AWS credentials** automatically in the background **no manual input is required**.  
 
 ## What’s Happening in This Step?  
 
@@ -14,5 +14,5 @@ This step will configure your ** AWS credentials** automatically in the backgrou
 Once the background process completes, you can confirm your AWS identity by running:  
 
 
-`aws sts get-caller-identity` {{exec}}
+`aws sts get-caller-identity`{{exec}}
 

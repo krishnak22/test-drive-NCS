@@ -1,14 +1,6 @@
 
 ---
 
-### **Background Script (script1.sh)**  
-This script will:  
- Assume the pre-configured role  
- Extract temporary credentials  
- Store them in a credentials file  
- Automatically set environment variables  
-
-```sh
 #!/bin/bash
 
 # Step 1: Assume the AWS role (Replace <YOUR_ROLE_ARN> with the actual ARN)
@@ -20,13 +12,13 @@ AWS_SECRET_ACCESS_KEY=$(echo $ASSUME_ROLE_OUTPUT | jq -r '.Credentials.SecretAcc
 AWS_SESSION_TOKEN=$(echo $ASSUME_ROLE_OUTPUT | jq -r '.Credentials.SessionToken')
 
 # Step 3: Store the credentials in a temporary file
-echo "[default]" > /tmp/aws_credentials
-echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> /tmp/aws_credentials
-echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> /tmp/aws_credentials
-echo "aws_session_token=$AWS_SESSION_TOKEN" >> /tmp/aws_credentials
+echo "[default]" > /root/aws_credentials
+echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> /root/aws_credentials
+echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> /root/aws_credentials
+echo "aws_session_token=$AWS_SESSION_TOKEN" >> /root/aws_credentials
+
 
 # Step 4: Export credentials as environment variables
-export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-export AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
-
+export AWS_ACCESS_KEY_ID=$(grep 'aws_access_key_id' /root/aws_credentials | cut -d '=' -f2 | tr -d ' ')
+export AWS_SECRET_ACCESS_KEY=$(grep 'aws_secret_access_key' /root/aws_credentials | cut -d '=' -f2 | tr -d ' ')
+export AWS_SESSION_TOKEN=$(grep 'aws_session_token' /root/aws_credentials | cut -d '=' -f2 | tr -d ' ')
