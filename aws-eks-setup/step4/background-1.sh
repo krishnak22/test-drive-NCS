@@ -1,8 +1,3 @@
-
----
-
-#!/bin/bash
-
 # Step 1: Assume the AWS role (Replace <YOUR_ROLE_ARN> with the actual ARN)
 ASSUME_ROLE_OUTPUT=$(aws sts assume-role --role-arn "arn:aws:iam::353502843997:role/ncs-storage-22-jan-prac-NCSOrchestratorRole-jDzPo7jpn5DO" --role-session-name "NCS-Test-Drive")
 
