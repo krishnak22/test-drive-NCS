@@ -29,7 +29,7 @@
       {
         "title": "Use Temporary Credentials",
         "text": "step5/step5.md",
-        "foreground"; "step5/foreground.sh"
+        "foreground": "step5/foreground.sh"
       }
     ],
     "finish": {
