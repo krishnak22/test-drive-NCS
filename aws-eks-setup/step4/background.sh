@@ -1,13 +1,5 @@
-echo "Background script running."
-
 # Step 1: Assume the AWS role
-ASSUME_ROLE_OUTPUT=$(aws sts assume-role --role-arn "arn:aws:iam::353502843997:role/ncs-storage-22-jan-prac-NCSOrchestratorRole-jDzPo7jpn5DO" --role-session-name "NCS-Test-Drive" 2>/tmp/aws_error.log)
-
-# Debug: Check if AWS Assume Role command was successful
-if [ $? -ne 0 ]; then
-    echo "Error: Failed to assume role. Check /tmp/aws_error.log for details."
-    exit 1
-fi
+ASSUME_ROLE_OUTPUT=$(aws sts assume-role --role-arn "arn:aws:iam::353502843997:role/ncs-storage-22-jan-prac-NCSOrchestratorRole-jDzPo7jpn5DO" --role-session-name "NCS-Test-Drive")
 
 # Step 2: Extract temporary credentials safely
 AWS_ACCESS_KEY_ID=$(echo "$ASSUME_ROLE_OUTPUT" | jq -r '.Credentials.AccessKeyId')
@@ -29,4 +21,3 @@ export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
 export AWS_SESSION_TOKEN="$AWS_SESSION_TOKEN"
 
 
-echo "Run the given command.""
