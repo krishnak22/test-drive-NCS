@@ -23,7 +23,7 @@
       },
       {
         "title": "Assume an IAM Role",
-        "text": "step4/step4.md"
+        "text": "step4/step4.md",
         "background": "step4/background-1.sh"
       },
       {
