@@ -52,16 +52,12 @@ while true; do
     read -p "Do you want to proceed? (yes/no): " CONFIRM
 
     if [[ "$CONFIRM" == "yes" ]]; then
+        echo "CLUSTER_NAME=$CLUSTER_NAME" > eks_inputs.env
+        echo "REGION=$REGION" >> eks_inputs.env
+        echo "VPC_SUBNETS=$VPC_SUBNETS" >> eks_inputs.env
+        echo -e "\n✅ Inputs validated successfully! Run './eks_create.sh' to create the cluster."
         break  # Exit loop and proceed to Step 2
     else
         echo -e "\nRestarting input process...\n"
     fi
 done
-
-# Save inputs to a file for the next script
-echo "CLUSTER_NAME=$CLUSTER_NAME" > eks_inputs.env
-echo "REGION=$REGION" >> eks_inputs.env
-echo "VPC_SUBNETS=$VPC_SUBNETS" >> eks_inputs.env
-
-echo -e "\n✅ Inputs validated successfully! Run './eks_create.sh' to create the cluster."
-
