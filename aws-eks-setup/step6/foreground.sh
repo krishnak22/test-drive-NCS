@@ -11,10 +11,4 @@ source eks_inputs.env
 echo -e "\n🚀 Starting EKS cluster creation..."
 eksctl create cluster --name "$CLUSTER_NAME" --region "$REGION" --vpc-private-subnets "$VPC_SUBNETS" --without-nodegroup
 
-if [[ $? -eq 0 ]]; then
-    echo -e "\n✅ EKS Cluster '$CLUSTER_NAME' created successfully!"
-else
-    echo -e "\n❌ Error: Failed to create the EKS cluster."
-    exit 1
-fi
 
