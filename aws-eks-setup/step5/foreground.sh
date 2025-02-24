@@ -41,9 +41,9 @@ echo -e "\n🚀 Starting EKS cluster creation...\n"
 eksctl create cluster --name "$CLUSTER_NAME" --region "$REGION" --vpc-private-subnets "$VPC_SUBNETS"
 
 if [[ $? -eq 0 ]]; then
-    echo -e "\n EKS Cluster '$CLUSTER_NAME' created successfully!"
+    echo -e "\n✅ EKS Cluster '$CLUSTER_NAME' created successfully!"
 else
-    echo -e "\n Error: Failed to create the EKS cluster."
+    echo -e "\n❌ Error: Failed to create the EKS cluster."
     exit 1
 fi
 
