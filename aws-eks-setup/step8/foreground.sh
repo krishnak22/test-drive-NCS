@@ -22,6 +22,4 @@ spec:
     bgp: Disabled
 EOF
 
-# Step 3.4: Add nodes to the cluster
-eksctl create nodegroup --cluster "$CLUSTER_NAME" --node-type t3.medium --region "$REGION"
 

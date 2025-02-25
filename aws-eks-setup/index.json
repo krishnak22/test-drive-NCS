@@ -31,10 +31,10 @@
         "text": "step5/step5.md",
         "foreground": "step5/foreground.sh"
       },
-      {
-        "title": "Create EKS Cluster",
-        "foreground": "step6/foreground.sh"
-      },
+#      {
+ #       "title": "Create EKS Cluster",
+  #      "foreground": "step6/foreground.sh"
+   #   },
       {
         "title": "Updatin kubeconfig",
         "foreground": "step7/foreground.sh"
