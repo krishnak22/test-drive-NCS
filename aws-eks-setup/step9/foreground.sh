@@ -19,18 +19,8 @@ metadata:
 nodeGroups:
   - name: private-ng
     instanceType: t3.medium
-    desiredCapacity: 2
+    desiredCapacity: 1
     privateNetworking: true
-    subnets:
 EOF
-
-# Convert the comma-separated subnet list into YAML list items
-IFS=',' read -ra SUBNET_ARRAY <<< "$SUBNET_IDS"
-for subnet in "\${SUBNET_ARRAY[@]}"; do
-  # Remove any accidental spaces around subnet IDs
-  subnet=\$(echo "\$subnet" | xargs)
-  echo "      - ${subnet}" >> "$OUTPUT_FILE"
-done
-
 echo "YAML file '$OUTPUT_FILE' created successfully."
 
