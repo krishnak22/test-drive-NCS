@@ -2,20 +2,9 @@
 # create-nodegroup-yaml.sh
 # This script reads cluster details from eke-setup.env and generates a YAML file for creating a private node group.
 
-# Check if the environment file exists
-if [ ! -f "eke-setup.env" ]; then
-  echo "Error: eke-setup.env file not found!"
-  exit 1
-fi
 
 # Source the environment variables
-source eke-setup.env
-
-# Validate required variables
-if [ -z "$CLUSTER_NAME" ] || [ -z "$REGION" ] || [ -z "$SUBNET_IDS" ]; then
-  echo "Error: Please ensure CLUSTER_NAME, REGION, and SUBNET_IDS are set in eke-setup.env."
-  exit 1
-fi
+source eks_inputs.env
 
 # Name of the output YAML file
 OUTPUT_FILE="nodegroup.yaml"
