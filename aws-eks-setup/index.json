@@ -39,8 +39,7 @@
         "foreground": "step7/foreground.sh"
       },
       {
-        "title": "Installing Calico",
-        "foreground": "step8/foreground.sh"
+        "title": "Installing Calico"
       },
       {
         "title": "OIDC Provider",
