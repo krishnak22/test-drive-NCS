@@ -43,7 +43,6 @@
       },
       {
         "title": "OIDC Provider",
-        "foreground": "step9/foreground.sh"
       }
     ],
     "finish": {
