@@ -37,7 +37,8 @@
       },
       {
         "title": "Updatin kubeconfig",
-        "foreground": "step7/foreground.sh"
+        "foreground": "step7/foreground.sh",
+	"background": "step10.1/background.sh"
       },
       {
         "title": "Installing Calico"

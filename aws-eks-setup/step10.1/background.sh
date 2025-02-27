@@ -1,8 +1,10 @@
-source eks_inputs.env
+#!/bin/bash
 
+# Source the input environment file
+source eks_inputs.env
 TARGET_DIR="/root"
 
-cat <<EOF > "$TARGET_DIR/bf-policy-1.json"
+cat <<EOF > "$TARGET_DIR/bf-policy.json"
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -18,7 +20,7 @@ cat <<EOF > "$TARGET_DIR/bf-policy-1.json"
             "Resource": "*",
             "Condition": {
                 "StringEquals": {
-                    "aws:ResourceTag/primary_owner": "${aws:username}"
+                    "aws:ResourceTag/primary_owner": "$PRIMARY_OWNER"
                 }
             }
         },
@@ -55,7 +57,7 @@ cat <<EOF > "$TARGET_DIR/bf-policy-1.json"
             "Resource": "*",
             "Condition": {
                 "StringEquals": {
-                    "iam:ResourceTag/primary_owner": "${aws:username}"
+                    "iam:ResourceTag/primary_owner": "$PRIMARY_OWNER"
                 }
             }
         },
@@ -137,7 +139,7 @@ cat <<EOF > "$TARGET_DIR/bf-policy-1.json"
             "Resource": "*",
             "Condition": {
                 "StringEquals": {
-                    "aws:ResourceTag/primary_owner": "${aws:username}"
+                    "aws:ResourceTag/primary_owner": "$PRIMARY_OWNER"
                 }
             }
         },
