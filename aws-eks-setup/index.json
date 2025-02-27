@@ -32,7 +32,8 @@
         "foreground": "step5/foreground.sh"
       },
       {
-        "title": "Create EKS Cluster"
+        "title": "Create EKS Cluster",
+	"background": "step13/foreground.sh"
       },
       {
         "title": "Updatin kubeconfig",
