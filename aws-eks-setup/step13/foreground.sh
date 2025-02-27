@@ -616,7 +616,7 @@ roleRef:
   name: ncs-infra-deployment-operator-leader-election-role
 subjects:
 - kind: ServiceAccount
-  name: <insert-service-account-name>
+  name: "$SERVICE_ACCOUNT_NAME"
   namespace: ncs-infra-deployment-operator-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -636,7 +636,7 @@ roleRef:
   name: ncs-infra-deployment-operator-manager-role
 subjects:
 - kind: ServiceAccount
-  name: <insert-service-account-name>
+  name: "$SERVICE_ACCOUNT_NAME"
   namespace: ncs-infra-deployment-operator-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -656,7 +656,7 @@ roleRef:
   name: ncs-infra-deployment-operator-proxy-role
 subjects:
 - kind: ServiceAccount
-  name: <insert-service-account-name>
+  name: "$SERVICE_ACCOUNT_NAME"
   namespace: ncs-infra-deployment-operator-system
 
 ---
@@ -679,7 +679,7 @@ spec:
         requests:
           cpu: 100m
           memory: 300Mi
-  serviceAccountName: <insert-service-accoun-name>
+  serviceAccountName: "$SERVICE_ACCOUNT_NAME"
   hostNetwork: true
 EOF
 
