@@ -683,4 +683,66 @@ spec:
   hostNetwork: true
 EOF
 
+#CREATE BF NODEGROUP  YAML FILE
+cat <<EOF > "$TARGET_DIR/bf-nodegroup.yaml"
+apiVersion: ncs.nutanix.com/v1alpha1
+kind: WorkerNode
+metadata:
+  labels:
+    app.kubernetes.io/name: ncs-infra-deployment-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: test-drive-ncs-workernode
+  namespace: $OPERATOR_NAMESPACE
+spec:
+  accountID: "353502843997"
+  nodePoolName: test-drive-ncs-testing
+  clusterName: $CLUSTER_NAME
+  nodeCount: $NODE_COUNT
+  availabilityZone: $AVAILABILITY_ZONE
+  nodeType: HCI
+  labels:
+    deployedBy: ncs-infra-deployment-operator
+  platform: aws
+  platformParameters:
+    aws:
+      tags:
+        primary_owner: $PRIMARY_OWNER
+      instanceType: $INSTANCE_TYPE
+      amiType: $AMI_TYPE
+      amiReleaseVersion: $AMI_RELEASE_VERSION
+      sshKeyPair: $SSH_KEY_PAIR
+  subnetCIDR: $SUBNET_CIDR
+EOF
 
+
+
+#CREATE INFRA YAML FILE
+cat <<EOF > "$TARGET_DIR/bf-infra.yaml"
+apiVersion: ncs.nutanix.com/v1alpha1
+kind: NcsInfra
+metadata:
+  labels:
+    app.kubernetes.io/name: ncs-infra-deployment-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: ncsinfra-sample
+  namespace: $OPERATOR_NAMESPACE
+spec:
+  ncsClusterSpec:
+    name: $NCS-CLUSTER_NAME
+    nodeCount: $NODE_COUNT
+    replicationFactor: $REPLICATION_FACTOR
+    availabilityZone: $AVAILABILITY_ZONE
+  accountID: "353502843997"
+  kubernetesClusterSpec:
+    name: $CLUSTER_NAME
+    region: $REGION
+    platform: aws
+  subnetSpec:
+    aosSubnetCidr: $AOS_SUBNET_CIDR
+    loadBalancerSubnetID: subnet-09e90be39af906fc9
+  platformParameters:
+    aws:
+      tags:
+        primary_owner: $PRIMARY_OWNER
+  version: $VERSION
+EOF
