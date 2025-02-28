@@ -71,7 +71,7 @@
       },
       {
 	"title": "CREATING YAML's FOR OPERATOR",
-	"foreground": "step13/foreground.sh"
+	"background": "step13/background.sh"
       }
     ],
     "finish": {
