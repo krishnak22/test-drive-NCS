@@ -76,7 +76,7 @@
       "title": "Completion",
       "text": "finish/finish.md"
     }
-  },
+  }
   "backend": {
     "imageid": "kubernetes-kubeadm-1node-4GB"
   }
