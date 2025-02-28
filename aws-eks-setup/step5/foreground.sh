@@ -21,7 +21,7 @@ log_message() {
 # Function to validate cluster name
 validate_cluster_name() {
     local name="$1"
-    if [[ ! "$name" =~ ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$ ]]; then
+    if [[ ! "$name" =~ ^[a-z0-9]([a-z0-9-]*[a-z0-9])?$ ]]; then
         echo "Error: Cluster name must contain only lowercase letters, numbers, and hyphens (-), and must start and end with a letter or number."
         return 1
     fi
