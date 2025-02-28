@@ -4,9 +4,9 @@
 echo "Please enter the primary owner value:"
 read primary_owner
 
-# Add the primary owner value to the file
-echo "PRIMARY_OWNER=$primary_owner" >> eks_inputs.env
+# Add the primary owner value to the /root/eks_inputs.env file
+echo "PRIMARY_OWNER=$primary_owner" >> /root/eks_inputs.env
 
-# Confirm the addition
-echo "Primary owner added to eks_inputs.env: PRIMARY_OWNER=$primary_owner"
+# Confirm that the value has been added
+echo "Primary owner value has been added to /root/eks_inputs.env: PRIMARY_OWNER=$primary_owner"
 
