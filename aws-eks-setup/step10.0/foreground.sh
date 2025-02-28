@@ -1,25 +1,17 @@
 #!/bin/bash
 
-# Define the env file
-ENV_FILE="eks_inputs.env"
+# Ask the user for the primary owner value
+echo "Please enter the primary owner value:"
+read primary_owner
 
-# Keep asking until a valid primary_owner is entered
-while true; do
-    # Ask the user for the primary_owner value
-    read -p "Enter the primary_owner value: " PRIMARY_OWNER
+# Check if the file exists, if not create it
+if [ ! -f file1.env ]; then
+  touch file1.env
+fi
 
-    # Check if the input is empty
-    if [[ -z "$PRIMARY_OWNER" ]]; then
-        echo "Error: primary_owner cannot be empty. Please enter a valid value."
-    else
-        # If the input is not empty, break the loop
-        break
-    fi
-done
+# Add the primary owner value to the file
+echo "PRIMARY_OWNER=$primary_owner" >> file1.env
 
-# Append the primary_owner value to the env file
-echo "PRIMARY_OWNER=$PRIMARY_OWNER" >> "$ENV_FILE"
-
-# Inform the user that the value has been set
-echo "primary_owner has been set to: $PRIMARY_OWNER"
+# Confirm the addition
+echo "Primary owner added to file1.env: PRIMARY_OWNER=$primary_owner"
 
