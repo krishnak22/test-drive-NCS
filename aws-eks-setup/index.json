@@ -32,7 +32,7 @@
         "foreground": "step5/foreground.sh"
       },
       {
-        "title": "Create EKS Cluster",
+        "title": "Create EKS Cluster"
       },
       {
         "title": "Updatin kubeconfig",
@@ -76,7 +76,7 @@
       "title": "Completion",
       "text": "finish/finish.md"
     }
-  }
+  },
   "backend": {
     "imageid": "kubernetes-kubeadm-1node-4GB"
   }
