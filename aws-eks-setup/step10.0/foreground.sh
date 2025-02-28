@@ -4,14 +4,9 @@
 echo "Please enter the primary owner value:"
 read primary_owner
 
-# Check if the file exists, if not create it
-if [ ! -f file1.env ]; then
-  touch file1.env
-fi
-
 # Add the primary owner value to the file
-echo "PRIMARY_OWNER=$primary_owner" >> file1.env
+echo "PRIMARY_OWNER=$primary_owner" >> eks_inputs.env
 
 # Confirm the addition
-echo "Primary owner added to file1.env: PRIMARY_OWNER=$primary_owner"
+echo "Primary owner added to eks_inputs.env: PRIMARY_OWNER=$primary_owner"
 
