@@ -1,12 +1,26 @@
 #!/bin/bash
 
-# Ask the user for the primary owner value
-echo "Please enter the primary owner value:"
-read primary_owner
+# Function to clean input (remove carriage return characters)
+clean_input() {
+    echo "$1" | tr -d '\r'
+}
 
-# Add the primary owner value to the /root/eks_inputs.env file
-echo "PRIMARY_OWNER=$primary_owner" >> /root/eks_inputs.env
+while true; do
+    # Ask the user for the primary owner value
+    echo "Please enter the primary owner value:"
+    read -r primary_owner
 
-# Confirm that the value has been added
-echo "Primary owner value has been added to /root/eks_inputs.env: PRIMARY_OWNER=$primary_owner"
+    # Clean the input to remove any carriage return characters
+    primary_owner=$(clean_input "$primary_owner")
+
+    # Check if the input is not empty
+    if [[ -z "$primary_owner" ]]; then
+        echo "Error: Primary owner value cannot be empty. Please enter a valid value."
+        continue
+    fi
+
+    # Add the primary owner value to the /root/eks_inputs.env file
+    echo "PRIMARY_OWNER=$primary_owner" >> /root/eks_inputs.env
+    break
+done
 
