@@ -33,7 +33,7 @@
       },
       {
         "title": "Create EKS Cluster"
-#	"foreground": "step6/foreground.sh"
+//	"foreground": "step6/foreground.sh"
       },
       {
         "title": "Updatin kubeconfig",
@@ -41,15 +41,15 @@
       },
       {
         "title": "Installing Calico"
-#	"foreground": "step8/foreground.sh"
+//	"foreground": "step8/foreground.sh"
       },
       {
         "title": "Nodegroup Creation"
-#	"foreground": "step9/foreground.sh"
+//	"foreground": "step9/foreground.sh"
       },
       {
 	"title": "OIDC"
-#	"foreground": "step10/foreground.sh"
+//	"foreground": "step10/foreground.sh"
       },
       {
 	"title": "SETTING UP PRIMARY OWNER",
@@ -61,7 +61,7 @@
       },
       {
 	"title": "Creating Service Account"
-#	"foreground": "step11.1/foreground.sh"
+//	"foreground": "step11.1/foreground.sh"
       },
       {
 	"title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
