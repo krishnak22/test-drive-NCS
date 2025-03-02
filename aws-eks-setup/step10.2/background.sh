@@ -62,77 +62,6 @@ cat <<EOF > "$TARGET_DIR/bf-policy-1.json"
             }
         },
         {
-            "Sid": "VisualEditor2",
-            "Effect": "Allow",
-            "Action": [
-                "iam:GetPolicyVersion",
-                "iam:ListRoleTags",
-                "ecr:DescribeImageReplicationStatus",
-                "eks:ListAddons",
-                "ecr:DescribeRepositoryCreationTemplates",
-                "ecr:ListTagsForResource",
-                "ecr:ListImages",
-                "ecr:BatchGetRepositoryScanningConfiguration",
-                "ecr:GetRegistryScanningConfiguration",
-                "eks:DescribeAddon",
-                "eks:DescribeNodegroup",
-                "iam:ListAttachedRolePolicies",
-                "iam:ListOpenIDConnectProviderTags",
-                "ecr:DescribeRepositories",
-                "eks:DescribeAddonVersions",
-                "iam:ListPolicyTags",
-                "iam:ListRolePolicies",
-                "ecr:BatchCheckLayerAvailability",
-                "ecr:GetLifecyclePolicy",
-                "iam:ListPolicies",
-                "ecr:GetRegistryPolicy",
-                "iam:GetRole",
-                "eks:ListNodegroups",
-                "ecr:DescribeImageScanFindings",
-                "eks:DescribeAddonConfiguration",
-                "iam:GetPolicy",
-                "ecr:GetLifecyclePolicyPreview",
-                "ecr:GetDownloadUrlForLayer",
-                "ecr:DescribeRegistry",
-                "ecr:DescribePullThroughCacheRules",
-                "ecr:GetAuthorizationToken",
-                "iam:ListRoles",
-                "sts:*",
-                "eks:CreateNodegroup",
-                "ecr:ValidatePullThroughCacheRule",
-                "ecr:GetAccountSetting",
-                "iam:ListPolicyVersions",
-                "eks:DescribeIdentityProviderConfig",
-                "iam:ListOpenIDConnectProviders",
-                "ecr:BatchGetImage",
-                "ecr:DescribeImages",
-                "eks:CreateAddon",
-                "eks:DescribeCluster",
-                "eks:ListClusters",
-                "iam:GetOpenIDConnectProvider",
-                "iam:GetRolePolicy",
-                "ecr:GetRepositoryPolicy"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "VisualEditor3",
-            "Effect": "Allow",
-            "Action": [
-                "ec2:CreateLaunchTemplate",
-                "ec2:CreatePlacementGroup",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateTags",
-                "ec2:CreateRouteTable",
-                "ec2:AssociateSubnetCidrBlock",
-                "ec2:RunInstances",
-                "ec2:CreateSubnet",
-                "ec2:CreateLaunchTemplateVersion",
-                "ec2:AssociateRouteTable"
-            ],
-            "Resource": "*"
-        },
-        {
             "Sid": "VisualEditor4",
             "Effect": "Allow",
             "Action": "ec2:*",
@@ -142,17 +71,6 @@ cat <<EOF > "$TARGET_DIR/bf-policy-1.json"
                     "aws:ResourceTag/primary_owner": "$PRIMARY_OWNER"
                 }
             }
-        },
-        {
-            "Sid": "VisualEditor5",
-            "Effect": "Allow",
-            "Action": [
-                "s3:PutObject",
-                "s3:TagResource",
-                "s3:PutObjectVersionTagging",
-                "s3:PutObjectTagging"
-            ],
-            "Resource": "arn:aws:s3:::nutanix-ncs-metadata-353502843997/*"
         },
         {
             "Sid": "VisualEditor6",
