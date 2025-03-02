@@ -7,16 +7,13 @@ source eks_inputs.env
 eksctl create iamserviceaccount --cluster "$CLUSTER_NAME" --region "$REGION" --name ncs-infra-sa-new-2 --namespace ncs-infra-deployment-operator-system --attach-policy-arn arn:aws:iam::353502843997:policy/test-drive-ncs-bf-op-policy-1 --approve
 
 # Add service account name and namespace to eks_inputs.env
-echo "SERVICE_ACCOUNT_NAME=ncs-infra-sa-new-2" >> eks_inputs.env
-echo "OPERATOR_NAMESPACE=ncs-infra-deployment-operator-system" >> eks_inputs.env
+echo "SERVICE_ACCOUNT_NAME=ncs-infra-sa-new-2" >>/root/eks_inputs.env
+echo "OPERATOR_NAMESPACE=ncs-infra-deployment-operator-system" >> /root/eks_inputs.env
 
 # Retrieve the role name and ARN of the service account
-ROLE_NAME=$(aws iam list-roles --query "Roles[?RoleName=='eksctl-${CLUSTER_NAME}-cluster-ServiceAccount-ncs-infra-sa-new-2'].RoleName" --output text)
-ROLE_ARN=$(aws iam get-role --role-name "$ROLE_NAME" --query "Role.Arn" --output text)
+SA_ROLE_NAME=$(kubectl get sa "$SERVICE_ACCOUNT_NAME" -n "$SERVICE_ACCOUNT_NAMESPACE" -o jsonpath='{.metadata.annotations.eks\.amazonaws\.com/role-arn}' | awk -F'/' '{print $NF}')
+echo "SA_ROLE_NAME=$SA_ROLE_NAME" >> /root/eks_inputs.env
 
-# Add role name and ARN to eks_inputs.env
-echo "SERVICE_ACCOUNT_ROLE_NAME=$ROLE_NAME" >> eks_inputs.env
-echo "SERVICE_ACCOUNT_ROLE_ARN=$ROLE_ARN" >> eks_inputs.env
-
-echo "Service account name, namespace, role name, and role ARN have been added to eks_inputs.env"
+SA_ROLE_ARN=$(kubectl get sa $SERVICE_ACCOUNT_NAME -n $SERVICE_ACCOUNT_NAMESPACE -o jsonpath='{.metadata.annotations.eks\.amazonaws\.com/role-arn}')
+echo "SA_ROLE_ARN=$SA_ROLE_ARN" >> /root/eks_inputs.env
 
