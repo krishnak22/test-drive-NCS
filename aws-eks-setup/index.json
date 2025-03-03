@@ -32,21 +32,25 @@
         "foreground": "step5/foreground.sh"
       },
       {
-        "title": "Create EKS Cluster"
+        "title": "Create EKS Cluster",
+	"foreground": "step6/foreground.sh"
       },
       {
         "title": "Updatin kubeconfig",
         "foreground": "step7/foreground.sh"
       },
       {
-        "title": "Installing Calico"
+        "title": "Installing Calico",
+	"foreground": "step8/foreground.sh"
 	
       },
       {
-        "title": "Nodegroup Creation"
+        "title": "Nodegroup Creation",
+	"foreground": "step9/foreground.sh"
       },
       {
-	"title": "OIDC"
+	"title": "OIDC",
+	"foreground": "step10/foreground.sh"
       },
       {
 	"title": "SETTING UP PRIMARY OWNER",

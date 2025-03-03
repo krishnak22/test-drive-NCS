@@ -4,4 +4,4 @@ eksctl create nodegroup --cluster "$CLUSTER_NAME" —-region "$REGION" --nodes-m
 -type t3.medium —name test-drive-ncs-ng-1 --node-private-networking
 
 
-echo "NODEGROUP_1=test-drive-ncs-ng-1" >> eks_inputs.env
+echo "NODEGROUP_1=test-drive-ncs-ng-1" >> /root/eks_inputs.env
