@@ -40,6 +40,7 @@
       },
       {
         "title": "Installing Calico"
+	
       },
       {
         "title": "Nodegroup Creation"
@@ -56,10 +57,12 @@
 	"background": "step10.2/background.sh"
       },
       {
-	"title": "Creating Service Account"
+	"title": "Creating Service Account",
+	"foreground": "step11.1/foreground.sh"
       },
       {
-	"title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE"
+	"title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
+	"foreground": "step11.2/foreground.sh"
       },
       {
 	"title": "TAKING INPUTS TO SETUP THE OPERATOR YAML",
