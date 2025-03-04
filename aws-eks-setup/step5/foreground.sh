@@ -72,7 +72,7 @@ while true; do
         echo "CLUSTER_NAME=$CLUSTER_NAME" > "$ENV_FILE"
         echo "REGION=$REGION" >> "$ENV_FILE"
         echo "VPC_SUBNETS=$VPC_SUBNETS" >> "$ENV_FILE"
-	echo "PRIMARY_OWNER=$PRIAMRY_OWNER" >> "$ENV_FILE"
+	echo "PRIMARY_OWNER=$PRIMARY_OWNER" >> "$ENV_FILE"
         break
     fi
 
