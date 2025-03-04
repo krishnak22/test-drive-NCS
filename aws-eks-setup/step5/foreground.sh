@@ -3,9 +3,6 @@
 ENV_FILE="eks_inputs.env"
 
 clear
-echo "========================================="
-echo "   AWS EKS Cluster Creation Wizard"
-echo "========================================="
 
 # List of valid AWS regions
 VALID_REGIONS=("us-east-1" "us-east-2" "us-west-1" "us-west-2" "eu-central-1" "eu-west-1" "eu-west-2" "ap-south-1" "ap-northeast-1")
@@ -24,36 +21,41 @@ validate_cluster_name() {
     return 0
 }
 
+# Step 1: Take and validate Cluster Name
 while true; do
-    # Step 1.1: Prompt user for inputs
     read -p "Enter Cluster Name: " CLUSTER_NAME
+    if [[ -z "$CLUSTER_NAME" ]]; then
+        echo "Error: Cluster Name cannot be empty."
+        continue
+    fi
+    if validate_cluster_name "$CLUSTER_NAME"; then
+        break
+    fi
+done
+
+# Step 2: Take and validate AWS Region
+while true; do
     read -p "Enter AWS Region: " REGION
-    read -p "Enter VPC Private Subnets (comma-separated): " VPC_SUBNETS
-
-    # Step 1.2: Validate inputs
-    if [[ -z "$CLUSTER_NAME" || -z "$REGION" || -z "$VPC_SUBNETS" ]]; then
-        echo "Error: All fields are required. Please enter valid values."
+    if [[ -z "$REGION" ]]; then
+        echo "Error: AWS Region cannot be empty."
         continue
     fi
-
-    # Validate Cluster Name
-    if ! validate_cluster_name "$CLUSTER_NAME"; then
-        continue
-    fi
-
-    # Validate AWS Region
-    if [[ ! " ${VALID_REGIONS[@]} " =~ " ${REGION} " ]]; then
+    if [[ " ${VALID_REGIONS[@]} " =~ " ${REGION} " ]]; then
+        break
+    else
         echo "Error: '$REGION' is not a valid AWS region."
+    fi
+done
+
+# Step 3: Take and validate VPC Subnets
+while true; do
+    read -p "Enter VPC Private Subnets (comma-separated): " VPC_SUBNETS
+    if [[ -z "$VPC_SUBNETS" ]]; then
+        echo "Error: VPC Subnets cannot be empty."
         continue
     fi
 
-    # Check if the cluster already exists
-    if eksctl get cluster --name "$CLUSTER_NAME" --region "$REGION" >/dev/null 2>&1; then
-        echo "Error: Cluster '$CLUSTER_NAME' already exists in region '$REGION'. Choose a different name."
-        continue
-    fi
-
-    # Validate Subnets
+    # Validate each subnet
     VALID_SUBNETS=true
     for SUBNET in ${VPC_SUBNETS//,/ }; do
         if ! aws ec2 describe-subnets --subnet-ids "$SUBNET" --region "$REGION" >/dev/null 2>&1; then
@@ -61,24 +63,37 @@ while true; do
             VALID_SUBNETS=false
         fi
     done
-    if [ "$VALID_SUBNETS" = false ]; then
+    if [ "$VALID_SUBNETS" = true ]; then
+        break
+    fi
+done
+
+#Step 4: Take the primary_owner value
+while true; do
+    read -p "Enter the primary owner value: " PRIMARY_OWNER
+    if [[ -z "$PRIMARY_OWNER" ]], then
+        echo "Error: Primary_Owner field cannot be empty."
         continue
     fi
 
-    # Confirm user inputs before proceeding
-    echo -e "\nYou have entered:"
-    echo "Cluster Name: $CLUSTER_NAME"
-    echo "Region: $REGION"
-    echo "VPC Private Subnets: $VPC_SUBNETS"
-    read -p "Do you want to proceed? (yes/no): " CONFIRM
 
-    if [[ "$CONFIRM" == "yes" ]]; then
-        # Store validated inputs in env file
-        echo "CLUSTER_NAME=$CLUSTER_NAME" > "$ENV_FILE"
-        echo "REGION=$REGION" >> "$ENV_FILE"
-        echo "VPC_SUBNETS=$VPC_SUBNETS" >> "$ENV_FILE"
-        break
-    fi
+# Confirm user inputs before proceeding
+echo -e "\nYou have entered:"
+echo "Cluster Name: $CLUSTER_NAME"
+echo "Region: $REGION"
+echo "VPC Private Subnets: $VPC_SUBNETS"
+echo "Primary_Owner: $PRIMARY_OWNER"
+read -p "Do you want to proceed? (yes/no): " CONFIRM
 
-done
+if [[ "$CONFIRM" == "yes" ]]; then
+    # Store validated inputs in env file
+    ENV_FILE="/root/eks_inputs.env"
+    echo "CLUSTER_NAME=$CLUSTER_NAME" > "$ENV_FILE"
+    echo "REGION=$REGION" >> "$ENV_FILE"
+    echo "VPC_SUBNETS=$VPC_SUBNETS" >> "$ENV_FILE"
+    echo "PRIMARY_OWNER=$PRIMARY_OWNER" >> "$ENV_FILE"
+    echo "Inputs saved to $ENV_FILE"
+else
+    echo "Operation canceled."
+fi
 
