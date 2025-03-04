@@ -1,90 +1,59 @@
 #!/bin/bash
 
-ENV_FILE="eks_inputs.env"
+# Define valid AWS regions in an array
+declare -a aws_regions=("us-east-1" "us-west-1" "us-west-2" "us-east-2" "ca-central-1" "eu-west-1" "eu-west-2" "eu-central-1" "ap-southeast-1" "ap-southeast-2" "ap-northeast-1" "ap-northeast-2" "sa-east-1" "af-south-1" "eu-north-1" "me-south-1" "ap-south-1" "ap-east-1" "us-gov-west-1" "us-gov-east-1")
 
-clear
-
-# List of valid AWS regions
-VALID_REGIONS=("us-east-1" "us-east-2" "us-west-1" "us-west-2" "eu-central-1" "eu-west-1" "eu-west-2" "ap-south-1" "ap-northeast-1")
-
-# Function to validate cluster name
-validate_cluster_name() {
-    local name="$1"
-    if [[ ! "$name" =~ ^[a-z0-9]([a-z0-9-]*[a-z0-9])?$ ]]; then
-        echo "Error: Cluster name must contain only lowercase letters, numbers, and hyphens (-), and must start and end with a letter or number."
-        return 1
-    fi
-    if [[ ${#name} -lt 1 || ${#name} -gt 100 ]]; then
-        echo "Error: Cluster name must be between 1 and 100 characters long."
-        return 1
-    fi
-    return 0
+# Validate if a given value exists in an array
+validate_in_array() {
+    local value=$1
+    shift
+    local array=("$@")
+    for item in "${array[@]}"; do
+        if [[ "$item" == "$value" ]]; then
+            return 0
+        fi
+    done
+    return 1
 }
 
-# Step 1: Take and validate Cluster Name
-while true; do
-    read -p "Enter Cluster Name: " CLUSTER_NAME
-    if [[ -z "$CLUSTER_NAME" ]]; then
-        echo "Error: Cluster Name cannot be empty."
-        continue
-    fi
-    if validate_cluster_name "$CLUSTER_NAME"; then
-        break
-    fi
-done
+# Validate subnet format (CIDR)
+validate_subnet_format() {
+    local subnet=$1
+    [[ "$subnet" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/[0-9]+$ ]]
+}
 
-# Step 2: Take and validate AWS Region
-while true; do
-    read -p "Enter AWS Region: " REGION
-    if [[ -z "$REGION" ]]; then
-        echo "Error: AWS Region cannot be empty."
-        continue
-    fi
-    if [[ " ${VALID_REGIONS[@]} " =~ " ${REGION} " ]]; then
-        break
-    else
-        echo "Error: '$REGION' is not a valid AWS region."
-    fi
-done
+# Main function to get and validate inputs
+get_input() {
+    local prompt=$1
+    local var_name=$2
+    local validation_func=$3
+    local validation_args=("${@:4}")
 
-# Step 3: Take and validate VPC Subnets (skip validation for now to let the user enter values)
-while true; do
-    read -p "Enter VPC Private Subnets (comma-separated): " VPC_SUBNETS
-    if [[ -z "$VPC_SUBNETS" ]]; then
-        echo "Error: VPC Subnets cannot be empty."
-        continue
-    fi
-    # For now, we're skipping subnet validation to allow input even if invalid.
-    break
-done
+    while : ; do
+        read -p "$prompt" "$var_name"
+        if [[ -z "${!var_name}" ]]; then
+            echo "$var_name cannot be empty. Please try again."
+        elif $validation_func "${!var_name}" "${validation_args[@]}"; then
+            return 0
+        else
+            echo "Invalid input for $var_name. Please try again."
+        fi
+    done
+}
 
-# Step 4: Take the primary_owner value
-while true; do
-    read -p "Enter the primary owner value: " PRIMARY_OWNER
-    if [[ -z "$PRIMARY_OWNER" ]]; then
-        echo "Error: Primary_Owner field cannot be empty."
-        continue
-    fi
-    break  # Exit the loop once a valid input is received
-done
+# Gather user inputs
+get_input "Enter the cluster name: " cluster_name validate_in_array "^[a-zA-Z0-9-]+$"
+get_input "Enter the region: " region validate_in_array "$aws_regions"
+get_input "Enter the subnets (comma-separated CIDR format): " subnets validate_subnet_format
+get_input "Enter the primary owner: " primary_owner validate_in_array "."
 
-# Confirm user inputs before proceeding
-echo -e "\nYou have entered:"
-echo "Cluster Name: $CLUSTER_NAME"
-echo "Region: $REGION"
-echo "VPC Private Subnets: $VPC_SUBNETS"
-echo "Primary_Owner: $PRIMARY_OWNER"
-read -p "Do you want to proceed? (yes/no): " CONFIRM
+# Save inputs to eks_inputs.env
+cat <<EOF > eks_inputs.env
+CLUSTER_NAME=$cluster_name
+REGION=$region
+SUBNETS=$subnets
+PRIMARY_OWNER=$primary_owner
+EOF
 
-if [[ "$CONFIRM" == "yes" ]]; then
-    # Store validated inputs in env file
-    ENV_FILE="/root/eks_inputs.env"
-    echo "CLUSTER_NAME=$CLUSTER_NAME" > "$ENV_FILE"
-    echo "REGION=$REGION" >> "$ENV_FILE"
-    echo "VPC_SUBNETS=$VPC_SUBNETS" >> "$ENV_FILE"
-    echo "PRIMARY_OWNER=$PRIMARY_OWNER" >> "$ENV_FILE"
-    echo "Inputs saved to $ENV_FILE"
-else
-    echo "Operation canceled."
-fi
+echo "Configuration has been saved to eks_inputs.env."
 
