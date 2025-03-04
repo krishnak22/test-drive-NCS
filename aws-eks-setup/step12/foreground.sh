@@ -1,58 +1,57 @@
 #!/bin/bash
 
-# Function to take and validate non-empty input
-get_input() {
-    local prompt_message="$1"
-    local var_name="$2"
-    local input_value
+# Initialize the variables
+declare -A inputs=(
+  [WORKER_NODE_NAME]=""
+  [NODE_POOL_NAME]=""
+  [NODE_COUNT]=""
+  [AVAILABILITY_ZONE]=""
+  [INSTANCE_TYPE]=""
+  [AMI_TYPE]=""
+  [AMI_RELEASE_VERSION]=""
+  [SSH_KEY_PAIR]=""
+  [SUBNET_CIDR]=""
+  [NCS_INFRA_NAME]=""
+  [NCS_CLUSTER_NAME]=""
+  [REPLICATION_FACTOR]=""
+  [AOS_SUBNET_CIDR]=""
+  [VERSION]=""
+)
 
-    while true; do
-        read -p "$prompt_message: " input_value
-        if [[ -n "$input_value" ]]; then
-            eval "$var_name='$input_value'"
-            echo "$var_name=$input_value" >> "$ENV_FILE"
-            break
-        else
-            echo "Error: $prompt_message cannot be empty. Please enter a valid value."
-        fi
-    done
-}
-# Step 1: Prompt user for inputs (one at a time)
-get_input "Enter Worker Node Name" WORKER_NODE_NAME
-get_input "Enter Node Pool Name" NODE_POOL_NAME
-get_input "Enter Node Count" NODE_COUNT
-get_input "Enter Availability Zone" AVAILABILITY_ZONE
-get_input "Enter Instance Type" INSTANCE_TYPE
-get_input "Enter AMI Type" AMI_TYPE
-get_input "Enter AMI Release Version" AMI_RELEASE_VERSION
-get_input "Enter SSH Key Pair" SSH_KEY_PAIR
-get_input "Enter Subnet CIDR" SUBNET_CIDR
-get_input "Enter NCS Infra Name" NCS_INFRA_NAME
-get_input "Enter NCS Cluster Name" NCS_CLUSTER_NAME
-get_input "Enter Replication Factor" REPLICATION_FACTOR
-get_input "Enter AOS Subnet CIDR" AOS_SUBNET_CIDR
-get_input "Enter Version" VERSION
+# Path to store the environment variables
+env_file="file1.env"
 
-# Step 2: Store inputs in environment file
-ENV_FILE="/root/eks_inputs.env"
-cat <<EOF >> "$ENV_FILE"
-WORKER_NODE_NAME=$WORKER_NODE_NAME
-NODE_POOL_NAME=$NODE_POOL_NAME
-NODE_COUNT=$NODE_COUNT
-AVAILABILITY_ZONE=$AVAILABILITY_ZONE
-INSTANCE_TYPE=$INSTANCE_TYPE
-AMI_TYPE=$AMI_TYPE
-AMI_RELEASE_VERSION=$AMI_RELEASE_VERSION
-SSH_KEY_PAIR=$SSH_KEY_PAIR
-SUBNET_CIDR=$SUBNET_CIDR
-NCS_INFRA_NAME=$NCS_INFRA_NAME
-NCS_CLUSTER_NAME=$NCS_CLUSTER_NAME
-REPLICATION_FACTOR=$REPLICATION_FACTOR
-AOS_SUBNET_CIDR=$AOS_SUBNET_CIDR
-VERSION=$VERSION
-EOF
+# While loop for input
+while true; do
+  all_inputs_valid=true
 
-# Step 3: Confirmation message
-echo "All inputs have been successfully saved in $ENV_FILE "
+  # Loop through each variable to get input from the user
+  for var in "${!inputs[@]}"; do
+    # Prompt for user input
+    read -p "Enter value for $var: " input_value
 
+    # Validate if input is not empty
+    if [[ -z "$input_value" ]]; then
+      echo "$var cannot be empty. Please provide a valid value."
+      all_inputs_valid=false
+      break
+    else
+      # Store the input in the array
+      inputs[$var]="$input_value"
+    fi
+  done
+
+  # If all inputs are valid, break out of the loop
+  if [ "$all_inputs_valid" = true ]; then
+    break
+  fi
+done
+
+# Write the validated inputs to the file
+> "$env_file"  # Clear the contents of the file (if it exists)
+for var in "${!inputs[@]}"; do
+  echo "$var=${inputs[$var]}" >> "$env_file"
+done
+
+echo "All inputs are valid. Values have been written to $env_file"
 
