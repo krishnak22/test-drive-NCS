@@ -1,59 +1,75 @@
-#!/bin/bash
+# List of valid AWS regions
+VALID_REGIONS=("us-east-1" "us-east-2" "us-west-1" "us-west-2" "eu-central-1" "eu-west-1" "eu-west-2" "ap-south-1" "ap-northeast-1")
 
-# Define valid AWS regions in an array
-declare -a aws_regions=("us-east-1" "us-west-1" "us-west-2" "us-east-2" "ca-central-1" "eu-west-1" "eu-west-2" "eu-central-1" "ap-southeast-1" "ap-southeast-2" "ap-northeast-1" "ap-northeast-2" "sa-east-1" "af-south-1" "eu-north-1" "me-south-1" "ap-south-1" "ap-east-1" "us-gov-west-1" "us-gov-east-1")
+# Function to validate cluster name
+validate_cluster_name() {
+    local name="$1"
+    if [[ ! "$name" =~ ^[a-z0-9]([a-z0-9-]*[a-z0-9])?$ ]]; then
+        echo "Error: Cluster name must contain only lowercase letters, numbers, and hyphens (-), and must start and end with a letter or number."
+        return 1
+    fi
+    if [[ ${#name} -lt 1 || ${#name} -gt 100 ]]; then
+        echo "Error: Cluster name must be between 1 and 100 characters long."
+        return 1
+    fi
+    return 0
+}
 
-# Validate if a given value exists in an array
-validate_in_array() {
-    local value=$1
-    shift
-    local array=("$@")
-    for item in "${array[@]}"; do
-        if [[ "$item" == "$value" ]]; then
-            return 0
+while true; do
+    # Step 1.1: Prompt user for inputs
+    read -p "Enter Cluster Name: " CLUSTER_NAME
+    read -p "Enter AWS Region: " REGION
+    read -p "Enter VPC Private Subnets (comma-separated): " VPC_SUBNETS
+
+    # Step 1.2: Validate inputs
+    if [[ -z "$CLUSTER_NAME" || -z "$REGION" || -z "$VPC_SUBNETS" ]]; then
+        echo "Error: All fields are required. Please enter valid values."
+        continue
+    fi
+
+    # Validate Cluster Name
+    if ! validate_cluster_name "$CLUSTER_NAME"; then
+        continue
+    fi
+
+    # Validate AWS Region
+    if [[ ! " ${VALID_REGIONS[@]} " =~ " ${REGION} " ]]; then
+        echo "Error: '$REGION' is not a valid AWS region."
+        continue
+    fi
+
+    # Check if the cluster already exists
+    if eksctl get cluster --name "$CLUSTER_NAME" --region "$REGION" >/dev/null 2>&1; then
+        echo "Error: Cluster '$CLUSTER_NAME' already exists in region '$REGION'. Choose a different name."
+        continue
+    fi
+
+    # Validate Subnets
+    VALID_SUBNETS=true
+    for SUBNET in ${VPC_SUBNETS//,/ }; do
+        if ! aws ec2 describe-subnets --subnet-ids "$SUBNET" --region "$REGION" >/dev/null 2>&1; then
+            echo "Error: Subnet ID '$SUBNET' is invalid or does not exist in region '$REGION'."
+            VALID_SUBNETS=false
         fi
     done
-    return 1
-}
+    if [ "$VALID_SUBNETS" = false ]; then
+        continue
+    fi
 
-# Validate subnet format (CIDR)
-validate_subnet_format() {
-    local subnet=$1
-    [[ "$subnet" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/[0-9]+$ ]]
-}
+    # Confirm user inputs before proceeding
+    echo -e "\nYou have entered:"
+    echo "Cluster Name: $CLUSTER_NAME"
+    echo "Region: $REGION"
+    echo "VPC Private Subnets: $VPC_SUBNETS"
+    read -p "Do you want to proceed? (yes/no): " CONFIRM
 
-# Main function to get and validate inputs
-get_input() {
-    local prompt=$1
-    local var_name=$2
-    local validation_func=$3
-    local validation_args=("${@:4}")
+    if [[ "$CONFIRM" == "yes" ]]; then
+        # Store validated inputs in env file
+        echo "CLUSTER_NAME=$CLUSTER_NAME" > "$ENV_FILE"
+        echo "REGION=$REGION" >> "$ENV_FILE"
+        echo "VPC_SUBNETS=$VPC_SUBNETS" >> "$ENV_FILE"
+        break
+    fi
 
-    while : ; do
-        read -p "$prompt" "$var_name"
-        if [[ -z "${!var_name}" ]]; then
-            echo "$var_name cannot be empty. Please try again."
-        elif $validation_func "${!var_name}" "${validation_args[@]}"; then
-            return 0
-        else
-            echo "Invalid input for $var_name. Please try again."
-        fi
-    done
-}
-
-# Gather user inputs
-get_input "Enter the cluster name: " cluster_name validate_in_array "^[a-zA-Z0-9-]+$"
-get_input "Enter the region: " region validate_in_array "$aws_regions"
-get_input "Enter the subnets (comma-separated CIDR format): " subnets validate_subnet_format
-get_input "Enter the primary owner: " primary_owner validate_in_array "."
-
-# Save inputs to eks_inputs.env
-cat <<EOF > eks_inputs.env
-CLUSTER_NAME=$cluster_name
-REGION=$region
-SUBNETS=$subnets
-PRIMARY_OWNER=$primary_owner
-EOF
-
-echo "Configuration has been saved to eks_inputs.env."
+done
 
