@@ -1,6 +1,6 @@
 source eks_inputs.env
 
-echo -e "\n🚀 Installing Calico on EKS cluster '$CLUSTER_NAME'..."
+echo -e "\nInstalling Calico on EKS cluster '$CLUSTER_NAME'..."
 
 # Step 3.1: Remove AWS VPC CNI Daemonset
 kubectl delete daemonset -n kube-system aws-node

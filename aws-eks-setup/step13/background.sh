@@ -616,7 +616,7 @@ roleRef:
   name: ncs-infra-deployment-operator-leader-election-role
 subjects:
 - kind: ServiceAccount
-  name: "$SERVICE_ACCOUNT_NAME"
+  name: $SERVICE_ACCOUNT_NAME
   namespace: ncs-infra-deployment-operator-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -636,7 +636,7 @@ roleRef:
   name: ncs-infra-deployment-operator-manager-role
 subjects:
 - kind: ServiceAccount
-  name: "$SERVICE_ACCOUNT_NAME"
+  name: $SERVICE_ACCOUNT_NAME
   namespace: ncs-infra-deployment-operator-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -656,7 +656,7 @@ roleRef:
   name: ncs-infra-deployment-operator-proxy-role
 subjects:
 - kind: ServiceAccount
-  name: "$SERVICE_ACCOUNT_NAME"
+  name: $SERVICE_ACCOUNT_NAME
   namespace: ncs-infra-deployment-operator-system
 
 ---
@@ -679,7 +679,7 @@ spec:
         requests:
           cpu: 100m
           memory: 300Mi
-  serviceAccountName: "$SERVICE_ACCOUNT_NAME"
+  serviceAccountName: $SERVICE_ACCOUNT_NAME
   hostNetwork: true
 EOF
 
@@ -691,11 +691,11 @@ metadata:
   labels:
     app.kubernetes.io/name: ncs-infra-deployment-operator
     app.kubernetes.io/managed-by: kustomize
-  name: test-drive-ncs-workernode
-  namespace: $OPERATOR_NAMESPACE
+  name: $WORKER_NODE_NAME
+  namespace: $SERVICE_ACCOUNT_NAMESPACE
 spec:
   accountID: "353502843997"
-  nodePoolName: test-drive-ncs-testing
+  nodePoolName: $NODE_POOL_NAME
   clusterName: $CLUSTER_NAME
   nodeCount: $NODE_COUNT
   availabilityZone: $AVAILABILITY_ZONE
@@ -724,8 +724,8 @@ metadata:
   labels:
     app.kubernetes.io/name: ncs-infra-deployment-operator
     app.kubernetes.io/managed-by: kustomize
-  name: ncsinfra-sample
-  namespace: $OPERATOR_NAMESPACE
+  name: $NCS_INFRA_NAME
+  namespace: $SERVICE_ACCOUNT_NAMESPACE
 spec:
   ncsClusterSpec:
     name: $NCS-CLUSTER_NAME
