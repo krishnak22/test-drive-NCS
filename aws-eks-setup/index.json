@@ -32,33 +32,40 @@
         "foreground": "step5/foreground.sh"
       },
       {
-        "title": "Create EKS Cluster"
+        "title": "Create EKS Cluster",
+	"foreground": "step6/foreground.sh"
       },
       {
-        "title": "Updatin kubeconfig",
+        "title": "Updating kubeconfig",
         "foreground": "step7/foreground.sh"
       },
       {
-        "title": "Installing Calico"
+        "title": "Installing Calico",
+	"foreground": "step8/foreground.sh"
 	
       },
       {
-        "title": "Nodegroup Creation"
+        "title": "Nodegroup Creation",
+	"foreground": "step9/foreground.sh"
       },
       {
-	"title": "OIDC"
+	"title": "OIDC",
+	"foreground": "step10/foreground.sh"
       },
       {
-	"title": "SETTING UP PRIMARY OWNER"
+        "title": "SETTING UP INLINE POLICIES FOR SERVICE ACCOUNT ROLE",
+	"background": "step10.2/background.sh"
       },
       {
-        "title": "SETTING UP INLINE POLICIES FOR SERVICE ACCOUNT ROLE"
+	"title": "Creating Service Account",
+	"foreground": "step11.1/foreground.sh"
       },
       {
-	"title": "Creating Service Account"
-      },
+	"title": "Storing variables in eks_inputs.env",
+	"background": "step11.1.1/background.sh"
       {
-	"title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE"
+	"title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
+	"foreground": "step11.2/foreground.sh"
       },
       {
 	"title": "TAKING INPUTS TO SETUP THE OPERATOR YAML",
