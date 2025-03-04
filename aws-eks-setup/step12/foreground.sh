@@ -4,18 +4,19 @@
 get_input() {
     local prompt_message="$1"
     local var_name="$2"
+    local input_value
 
     while true; do
-        read -r -p "$prompt_message: " input_value
+        read -p "$prompt_message: " input_value
         if [[ -n "$input_value" ]]; then
-            declare -g "$var_name=$input_value"
+            eval "$var_name='$input_value'"
+            echo "$var_name=$input_value" >> "$ENV_FILE"
             break
         else
             echo "Error: $prompt_message cannot be empty. Please enter a valid value."
         fi
     done
 }
-
 # Step 1: Prompt user for inputs (one at a time)
 get_input "Enter Worker Node Name" WORKER_NODE_NAME
 get_input "Enter Node Pool Name" NODE_POOL_NAME
