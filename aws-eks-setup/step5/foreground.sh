@@ -22,9 +22,10 @@ while true; do
     read -p "Enter Cluster Name: " CLUSTER_NAME
     read -p "Enter AWS Region: " REGION
     read -p "Enter VPC Private Subnets (comma-separated): " VPC_SUBNETS
+    read -p "Enter the primary-owner tag value: " PRIMARY_OWNER
 
     # Step 1.2: Validate inputs
-    if [[ -z "$CLUSTER_NAME" || -z "$REGION" || -z "$VPC_SUBNETS" ]]; then
+    if [[ -z "$CLUSTER_NAME" || -z "$REGION" || -z "$VPC_SUBNETS" || -z "$PRIMARY_OWNER" ]]; then
         echo "Error: All fields are required. Please enter valid values."
         continue
     fi
@@ -63,6 +64,7 @@ while true; do
     echo "Cluster Name: $CLUSTER_NAME"
     echo "Region: $REGION"
     echo "VPC Private Subnets: $VPC_SUBNETS"
+    echo "Primary Owner: $PRIMARY_OWNER"
     read -p "Do you want to proceed? (yes/no): " CONFIRM
 
     if [[ "$CONFIRM" == "yes" ]]; then
@@ -70,6 +72,7 @@ while true; do
         echo "CLUSTER_NAME=$CLUSTER_NAME" > "$ENV_FILE"
         echo "REGION=$REGION" >> "$ENV_FILE"
         echo "VPC_SUBNETS=$VPC_SUBNETS" >> "$ENV_FILE"
+	echo "PRIMARY_OWNER=$PRIAMRY_OWNER" >> "$ENV_FILE"
         break
     fi
 
