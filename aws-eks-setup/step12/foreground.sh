@@ -6,9 +6,9 @@ get_input() {
     local var_name="$2"
 
     while true; do
-        read -p "$prompt_message: " input_value
+        read -r -p "$prompt_message: " input_value
         if [[ -n "$input_value" ]]; then
-            eval "$var_name='$input_value'"
+            declare -g "$var_name=$input_value"
             break
         else
             echo "Error: $prompt_message cannot be empty. Please enter a valid value."
