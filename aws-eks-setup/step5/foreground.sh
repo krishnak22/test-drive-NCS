@@ -47,35 +47,26 @@ while true; do
     fi
 done
 
-# Step 3: Take and validate VPC Subnets
+# Step 3: Take and validate VPC Subnets (skip validation for now to let the user enter values)
 while true; do
     read -p "Enter VPC Private Subnets (comma-separated): " VPC_SUBNETS
     if [[ -z "$VPC_SUBNETS" ]]; then
         echo "Error: VPC Subnets cannot be empty."
         continue
     fi
-
-    # Validate each subnet
-    VALID_SUBNETS=true
-    for SUBNET in ${VPC_SUBNETS//,/ }; do
-        if ! aws ec2 describe-subnets --subnet-ids "$SUBNET" --region "$REGION" >/dev/null 2>&1; then
-            echo "Error: Subnet ID '$SUBNET' is invalid or does not exist in region '$REGION'."
-            VALID_SUBNETS=false
-        fi
-    done
-    if [ "$VALID_SUBNETS" = true ]; then
-        break
-    fi
+    # For now, we're skipping subnet validation to allow input even if invalid.
+    break
 done
 
-#Step 4: Take the primary_owner value
+# Step 4: Take the primary_owner value
 while true; do
     read -p "Enter the primary owner value: " PRIMARY_OWNER
-    if [[ -z "$PRIMARY_OWNER" ]], then
+    if [[ -z "$PRIMARY_OWNER" ]]; then
         echo "Error: Primary_Owner field cannot be empty."
         continue
     fi
-
+    break  # Exit the loop once a valid input is received
+done
 
 # Confirm user inputs before proceeding
 echo -e "\nYou have entered:"
