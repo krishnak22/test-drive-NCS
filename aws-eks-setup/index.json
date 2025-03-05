@@ -15,13 +15,11 @@
       },
       {
         "title": "Set Up AWS Environment",
-        "text": "step2/step2.md",
-	"background": "step5/background.sh"
+        "text": "step2/step2.md"
       },
       {
         "title": "Verify AWS Connectivity",
-        "text": "step3/step3.md",
-	"background": "step12/foreground.sh"
+        "text": "step3/step3.md"
       },
       {
         "title": "Assume an IAM Role",
@@ -35,7 +33,7 @@
       },
       {
         "title": "Create EKS Cluster",
-	"foreground": "step6/foreground0.sh"
+	"foreground": "step6/foreground.sh"
       },
       {
         "title": "Updating kubeconfig",
@@ -64,7 +62,7 @@
       },
       {
 	"title": "Storing variables in eks_inputs.env",
-	"background": "step11.1.1/background.sh"
+	"foreground": "step11.1.1/background.sh"
       },
       {
 	"title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
@@ -72,7 +70,7 @@
       },
       {
 	"title": "TAKING INPUTS TO SETUP THE OPERATOR YAML",
-	"foreground": "step12/foreground.sh"
+	"background": "step12/foreground.sh"
       },
       {
 	"title": "CREATING YAML's FOR OPERATOR",
