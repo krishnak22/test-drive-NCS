@@ -19,10 +19,14 @@ validate_cluster_name() {
 
 while true; do
     # Step 1.1: Prompt user for inputs
-    read -p "Enter Cluster Name: " CLUSTER_NAME
-    read -p "Enter AWS Region: " REGION
-    read -p "Enter VPC Private Subnets (comma-separated): " VPC_SUBNETS
-    read -p "Enter the primary-owner tag value: " PRIMARY_OWNER
+    echo -n "Enter Cluster Name: " 
+    read -r CLUSTER_NAME
+    echo -n  "Enter AWS Region: " 
+    read -r REGION
+    echo -n "Enter VPC Private Subnets (comma-separated): " 
+    read -r VPC_SUBNETS
+    echo -n "Enter the primary-owner tag value: "
+    read -r PRIMARY_OWNER
 
     # Step 1.2: Validate inputs
     if [[ -z "$CLUSTER_NAME" || -z "$REGION" || -z "$VPC_SUBNETS" || -z "$PRIMARY_OWNER" ]]; then
