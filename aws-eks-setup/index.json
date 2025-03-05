@@ -15,11 +15,13 @@
       },
       {
         "title": "Set Up AWS Environment",
-        "text": "step2/step2.md"
+        "text": "step2/step2.md",
+	"background": "step5/background.sh"
       },
       {
         "title": "Verify AWS Connectivity",
-        "text": "step3/step3.md"
+        "text": "step3/step3.md",
+	"background": "step12/foreground.sh"
       },
       {
         "title": "Assume an IAM Role",
