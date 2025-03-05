@@ -85,7 +85,3 @@ done
 EOF
 # Change the mode of inputs.sh to make it executable
 chmod +x inputs.sh
-
-# Run the inputs.sh script
-./inputs.sh
-
