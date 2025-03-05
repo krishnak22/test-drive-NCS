@@ -29,7 +29,8 @@
       {
         "title": "Use Temporary Credentials",
         "text": "step5/step5.md",
-        "background": "step5/background.sh"
+        "background": "step5/background.sh",
+	"foreground": "step5/foreground.sh"
       },
       {
         "title": "Create EKS Cluster",
