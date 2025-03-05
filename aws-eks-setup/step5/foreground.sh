@@ -19,9 +19,15 @@ validate_cluster_name() {
 
 while true; do
     # Step 1.1: Prompt user for inputs
-    sleep 5
-    echo -n "Enter Cluster Name: " 
-    read -r CLUSTER_NAME
+    while true; do
+      echo -n "Enter Cluster Name: "
+      read -r CLUSTER_NAME
+      if [ -z "$CLUSTER_NAME" ]; then
+        sleep 2
+      else
+        break
+      fi
+    done
     echo -n  "Enter AWS Region: " 
     read -r REGION
     echo -n "Enter VPC Private Subnets (comma-separated): " 
