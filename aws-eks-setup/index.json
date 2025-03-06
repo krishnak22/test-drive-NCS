@@ -32,17 +32,14 @@
         "background": "step5/background.sh"
       },
       {
-        "title": "Create EKS Cluster",
-        "foreground": "step6/foreground.sh"
+        "title": "Create EKS Cluster"
       },
       {
         "title": "Updating kubeconfig",
         "foreground": "step7/foreground.sh"
       },
       {
-        "title": "Installing Calico",
-        "foreground": "step8/foreground.sh"
-
+        "title": "Installing Calico"
       },
       {
         "title": "Nodegroup Creation",
