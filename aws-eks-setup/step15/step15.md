@@ -5,11 +5,11 @@ The CSI Volume Driver Helm Chart packages include the required deployment YAML m
 
 ## STEP 1 :
 
-**DOWNLOAD THE HELM CHART **
+**DOWNLOAD THE HELM CHART**
 
 To download the **CSI Volume Driver Helm Chart** click on the following command to run it.
 
-`curl -L -O https://github.com/nutanix/helm-releases/releases/download/nutanix-csi-storage-3.2.0/nutanix-csi-storage-3.2.0.tgz`{{exec}}
+`curl -L -O https://github.com/nutanix/helm-releases/releases/download/nutanix-csi-storage-3.2.0/nutanix-csi-storage-3.2.0.tgz.`{{exec}}
 
 ## STEP2 :
 
