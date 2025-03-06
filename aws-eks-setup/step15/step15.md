@@ -9,7 +9,7 @@ The CSI Volume Driver Helm Chart packages include the required deployment YAML m
 
 To download the **CSI Volume Driver Helm Chart** click on the following command to run it.
 
-`curl -L -O https://github.com/nutanix/helm-releases/releases/download/nutanix-csi-storage-3.2.0/nutanix-csi-storage-3.2.0.tgz.`{{exec}}
+`curl -L -O https://github.com/nutanix/helm-releases/releases/download/nutanix-csi-storage-3.2.0/nutanix-csi-storage-3.2.0.tgz`{{exec}}
 
 ## STEP2 :
 
@@ -21,11 +21,11 @@ To download the **CSI Volume Driver Helm Chart** click on the following command 
 
 Retrieving the **prismEndpoint and password** of the PE
 
-**STEP3.1 : ** To get the prismEndpoint execute the following command and use the vip as prsimEndpoint.
+**STEP3.1 :** To get the prismEndpoint execute the following command and use the vip as prsimEndpoint.
 
-`Kubectl describe ncscluster testdrive-ncs -n ncs-system`{{exec}}
+`kubectl describe ncscluster testdrive-ncs -n ncs-system`{{exec}}
 
-**STEP3.2 : ** To get the password execute the following command and use the output as password. 
+**STEP3.2 :** To get the password execute the following command and use the output as password. 
 
 `kubectl get -n ncs-system secrets/testdrive-ncs-init-creds -ogo-template='{{index .data "cvm-creds" | base64decode}}' | base64 -d`{{exec}}
 
@@ -33,9 +33,11 @@ Retrieving the **prismEndpoint and password** of the PE
 
 Updating the values.yaml file in nutanix-csi-storage-3.2.0.tgz directory.
 
-**STEP4.1 : ** Update the value of **createPrismCentralSecret** to false.
-**STEP4.2 : ** Uncomment the **prismEndPoint, username, password** and update the values and use **admin** as username.
-**STEP4.3 : ** Update the value of **usePC** as false.
+**STEP4.1 :** Update the value of **createPrismCentralSecret** to false. 
+
+**STEP4.2 :** Uncomment the **prismEndPoint, username, password** and update the values and use **admin** as username. 
+
+**STEP4.3 :** Update the value of **usePC** as false.
 
 ## STEP5
 
