@@ -11,4 +11,5 @@ metadata:
  namespace: ntnx-system
 data:
  key: $KEY
+EOF
 

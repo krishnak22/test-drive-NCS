@@ -6,6 +6,8 @@ source eks_inputs.env
 
 SECURITY_GROUP_ID=$(aws eks describe-cluster --name $CLUSTER_NAME --region $REGION --query "cluster.resourcesVpcConfig.securityGroupIds[0]" --output text) >> eks_inputs.env
 
+echo "SECURITY_GROUP_ID=$SECURITY_GROUP_ID" >> /root/eks_inputs.env
+
 for key in $(compgen -A variable | grep 'node'); do
     IP=${!key} 
 
