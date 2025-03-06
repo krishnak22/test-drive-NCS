@@ -28,29 +28,23 @@
       },
       {
         "title": "Use Temporary Credentials",
-        "text": "step5/step5.md",
-        "background": "step5/background.sh"
+	"text": "step15/step15.md"
       },
       {
-        "title": "Create EKS Cluster",
-	"foreground": "step6/foreground.sh"
+        "title": "Create EKS Cluster"
       },
       {
-        "title": "Updating kubeconfig",
-        "foreground": "step7/foreground.sh"
+        "title": "Updating kubeconfig"
       },
       {
-        "title": "Installing Calico",
-	"foreground": "step8/foreground.sh"
+        "title": "Installing Calico"
 	
       },
       {
-        "title": "Nodegroup Creation",
-	"foreground": "step9/foreground.sh"
+        "title": "Nodegroup Creation"
       },
       {
-	"title": "OIDC",
-	"foreground": "step10/foreground.sh"
+	"title": "OIDC"
       },
       {
         "title": "SETTING UP INLINE POLICIES FOR SERVICE ACCOUNT ROLE",
