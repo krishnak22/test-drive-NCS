@@ -68,11 +68,7 @@
       { 
 	"title": "Installing the CSI Volume Driver",
 	"text": "step15/step15.md",
-	"background": "step15/background_1.sh",
-	"background": "step15/background_2.sh",
-	"background": "step15/background_3.sh",
-	"background": "step15/background_4.sh",
-	"background": "step15/background_5.sh"
+	"foreground": "step15/foreground_1.sh"
       } 
     ],
     "finish": {
