@@ -66,3 +66,7 @@ for key in $(compgen -A variable | grep 'node'); do
         --region "$REGION"
 done
 
+
+helm install -n ntnx-system -f nutanix-csi-storage/values.yaml nutanix-csi ./nutanix-csi-storage
+
+kubectl get pod -n ntnx-system
