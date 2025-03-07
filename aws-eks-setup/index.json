@@ -75,12 +75,12 @@
       {
         "title": "CREATING YAML's FOR OPERATOR",
         "background": "step13/background.sh"
-      },      
-      { 
-        "title": "Installing the CSI Volume Driver",
-        "text": "step15/step15.md",
-        “foreground”: “step15/foreground_1.sh”
-      } 
+      },
+      {
+	"title": "Installing CSI Volume Driver",
+	"text": "step15/step15.md",
+	"foreground": "step15/foreground_1.sh"
+      }
     ],
     "finish": {
       "title": "Completion",
