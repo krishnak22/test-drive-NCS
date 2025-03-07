@@ -8,12 +8,14 @@ SECURITY_GROUP_ID=$(aws eks describe-cluster --name $CLUSTER_NAME --region $REGI
 
 echo "SECURITY_GROUP_ID=$SECURITY_GROUP_ID" >> /root/eks_inputs.env
 
+source eks_inputs.env
 for key in $(compgen -A variable | grep 'node'); do
-    IP=${!key} 
+    IP=${!key}
 
     aws ec2 authorize-security-group-ingress \
-        --group-id $SECURITY_GROUP_ID \
+        --group-id "$SECURITY_GROUP_ID" \
         --protocol tcp \
-        --port 22 \
-        --cidr ${IP}/32
+        --port 9440 \
+        --cidr "${IP}/32" \
+        --region "$REGION"
 done
