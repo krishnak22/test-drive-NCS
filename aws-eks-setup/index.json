@@ -15,7 +15,9 @@
       },
       {
         "title": "Set Up AWS Environment",
-        "text": "step2/step2.md"
+        "text": "step2/step2.md",
+	"foreground": "step5/foreground1.sh",
+	"background": "step5/background.sh"
       },
       {
         "title": "Verify AWS Connectivity",

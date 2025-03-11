@@ -50,8 +50,7 @@ kubectl get nodes -o wide | awk 'NR>1 {print $6}' | nl -v1 | awk '{print "node"$
 
 source eks_inputs.env
 
-SECURITY_GROUP_ID=$(aws eks describe-cluster --name $CLUSTER_NAME --region $REGION --query "cluster.resourcesVpcConfig.clusterSecurityGroupId" --output text) >> eks_inputs.env
-
+SECURITY_GROUP_ID=$(aws ec2 describe-security-groups --region us-west-2 --filters "Name=tag:Name,Values=ncs-testdrive-ncs-aos-external" --query "SecurityGroups[0].GroupId" --output text)
 echo "SECURITY_GROUP_ID=$SECURITY_GROUP_ID" >> /root/eks_inputs.env
 
 source eks_inputs.env
