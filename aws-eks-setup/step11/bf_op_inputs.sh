@@ -45,10 +45,4 @@ REPLICATION_FACTOR=$REPLICATION_FACTOR
 AOS_SUBNET_CIDR=$AOS_SUBNET_CIDR
 EOF
 
-# Step 3: Confirmation message
-echo "All inputs have been successfully saved in $ENV_FILE "
-
-
-EOF
-
 chmod +x inputs1.sh
