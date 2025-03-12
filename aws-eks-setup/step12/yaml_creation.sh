@@ -744,7 +744,7 @@ spec:
     aws:
       tags:
         primary_owner: $PRIMARY_OWNER
-  version: $VERSION
+  version: 1.0.0-5831 
 EOF
 
 
