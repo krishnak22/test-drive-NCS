@@ -1,6 +1,4 @@
-#!/bin/bash
 
-# Load variables from the saved input file
 if [[ ! -f eks_inputs.env ]]; then
     echo "Error: eks_inputs.env file not found. Run './eks_input.sh' first."
     exit 1
