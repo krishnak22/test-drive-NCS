@@ -749,7 +749,7 @@ EOF
 
 
 #CREATE NCS-CR.YAML FILE
-cat<< EOF > "$TARGET_DIR/ncs-cr.yaml
+cat<< EOF > "$TARGET_DIR/ncs-cr.yaml"
 apiVersion: ncs.nutanix.com/v1alpha1
 kind: NcsCluster
 metadata:
