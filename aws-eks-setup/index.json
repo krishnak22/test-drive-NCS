@@ -16,7 +16,7 @@
       {
         "title": "Set Up AWS Environment",
         "text": "step2/step2.md",
-	"background": "step1/background_1.sh"
+        "background": "step1/background_1.sh"
       },
       {
         "title": "Assume an IAM Role",
@@ -29,20 +29,50 @@
         "background": "step4/background.sh"
       },
       {
-	"title": "Taking Input for Brownfield Operator",
-	"background": "step11/bf_op_inputs.sh"
+        "title": "Create EKS Cluster",
+        "foreground": "step5/cluster_creation.sh"
       },
       {
-	"title": "Deployment",
-	"background": "step12/yaml_creation.sh"
+        "title": "Updating kubeconfig",
+        "foreground": "step6/kubeconifg_update.sh"
       },
       {
-	"title": "CSI Installation",
-	"foreground": "step14/csi_installation.sh"
+        "title": "Installing Calico",
+        "foreground": "step7/calico_installation.sh",
+        "background": "step7/bf_policy_creation.sh"
+
       },
       {
-	"title": "NXCTL Installation",
-	"foreground": "step15/nxctl_installation.sh"
+        "title": "Nodegroup Creation",
+        "foreground": "step8/nodegroup_creation.sh"
+      },
+      {
+        "title": "OIDC",
+        "foreground": "step9/oidc.sh"
+      },
+      {
+        "title": "Creating Service Account",
+        "foreground": "step10.1/sa_creation.sh"
+      },
+      {
+        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
+        "foreground": "step10.2/attach_policy.sh"
+      },
+      {
+        "title": "Taking Input for Brownfield Operator",
+        "background": "step11/bf_op_inputs.sh"
+      },
+      { 
+        "title": "Deployment",
+        "background": "step12/yaml_creation.sh"
+      },
+      {
+        "title": "CSI Installation",
+        "foreground": "step14/csi_installation.sh"
+      },
+      {
+        "title": "NXCTL Installation",
+        "foreground": “step15/nxctl_installation.sh"
       }
     ],
     "finish": {
