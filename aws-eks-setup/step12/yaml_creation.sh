@@ -708,9 +708,9 @@ spec:
       tags:
         primary_owner: $PRIMARY_OWNER
       instanceType: $INSTANCE_TYPE
-      amiType: $AMI_TYPE
-      amiReleaseVersion: $AMI_RELEASE_VERSION
-      sshKeyPair: $SSH_KEY_PAIR
+      amiType: AL2_x86_64
+      amiReleaseVersion: 1.30.7-20250103
+      sshKeyPair: test-drive-NCS-demo-key-pair
   subnetCIDR: $SUBNET_CIDR
 EOF
 
@@ -728,7 +728,7 @@ metadata:
   namespace: $SERVICE_ACCOUNT_NAMESPACE
 spec:
   ncsClusterSpec:
-    name: $NCS-CLUSTER_NAME
+    name: $NCS_CLUSTER_NAME
     nodeCount: $NODE_COUNT
     replicationFactor: $REPLICATION_FACTOR
     availabilityZone: $AVAILABILITY_ZONE
@@ -739,10 +739,35 @@ spec:
     platform: aws
   subnetSpec:
     aosSubnetCidr: $AOS_SUBNET_CIDR
-    loadBalancerSubnetID: subnet-09e90be39af906fc9
+    loadBalancerSubnetID: subnet-019d7dab8465a484b 
   platformParameters:
     aws:
       tags:
         primary_owner: $PRIMARY_OWNER
   version: $VERSION
+EOF
+
+
+#CREATE NCS-CR.YAML FILE
+cat<< EOF > "$TARGET_DIR/ncs-cr.yaml
+apiVersion: ncs.nutanix.com/v1alpha1
+kind: NcsCluster
+metadata:
+  name: testdrive-ncs
+  namespace: ncs-system
+spec:
+  aosStateDiskSize: 50Gi
+  aosStateDiskStorageClass: ncs-state-sc
+  aosSubnetCidr: $AOS_SUBNET_CIDR
+  image:
+    name: 353502843997.dkr.ecr.us-west-2.amazonaws.com/ncs-aos:1.0.0-32
+  nodeCount: $NODE_COUNT
+  nodeSelector:
+    matchExpressions:
+    - key: eks.amazonaws.com/nodegroup
+      operator: In
+      values:
+      - $NODE_POOL_NAME
+  replicationFactor: $REPLICATION_FACTOR
+  snapshotStorageClass: ncs-aos-state
 EOF

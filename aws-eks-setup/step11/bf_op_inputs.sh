@@ -24,15 +24,11 @@ get_input "Enter Node Pool Name" NODE_POOL_NAME
 get_input "Enter Node Count" NODE_COUNT
 get_input "Enter Availability Zone" AVAILABILITY_ZONE
 get_input "Enter Instance Type" INSTANCE_TYPE
-get_input "Enter AMI Type" AMI_TYPE
-get_input "Enter AMI Release Version" AMI_RELEASE_VERSION
-get_input "Enter SSH Key Pair" SSH_KEY_PAIR
 get_input "Enter Subnet CIDR" SUBNET_CIDR
 get_input "Enter NCS Infra Name" NCS_INFRA_NAME
 get_input "Enter NCS Cluster Name" NCS_CLUSTER_NAME
 get_input "Enter Replication Factor" REPLICATION_FACTOR
 get_input "Enter AOS Subnet CIDR" AOS_SUBNET_CIDR
-get_input "Enter Version" VERSION
 
 # Step 2: Store inputs in environment file
 ENV_FILE="/root/eks_inputs.env"
@@ -42,15 +38,11 @@ NODE_POOL_NAME=$NODE_POOL_NAME
 NODE_COUNT=$NODE_COUNT
 AVAILABILITY_ZONE=$AVAILABILITY_ZONE
 INSTANCE_TYPE=$INSTANCE_TYPE
-AMI_TYPE=$AMI_TYPE
-AMI_RELEASE_VERSION=$AMI_RELEASE_VERSION
-SSH_KEY_PAIR=$SSH_KEY_PAIR
 SUBNET_CIDR=$SUBNET_CIDR
 NCS_INFRA_NAME=$NCS_INFRA_NAME
 NCS_CLUSTER_NAME=$NCS_CLUSTER_NAME
 REPLICATION_FACTOR=$REPLICATION_FACTOR
 AOS_SUBNET_CIDR=$AOS_SUBNET_CIDR
-VERSION=$VERSION
 EOF
 
 # Step 3: Confirmation message
