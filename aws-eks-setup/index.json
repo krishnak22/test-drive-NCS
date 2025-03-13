@@ -50,21 +50,16 @@
         "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE"
       },
       {
-        "title": "Taking Input for Brownfield Operator",
-	"text": "step11/step11.md",
-	"background": "step11/bf_op_inputs.sh"
+        "title": "Taking Input for Brownfield Operator"
       },
       { 
-        "title": "Deployment",
-        "background": "step12/yaml_creation.sh"
+        "title": "Deployment"
       },
       {
-        "title": "CSI Installation",
-        "foreground": "step14/csi_installation.sh"
+        "title": "CSI Installation"
       },
       {
-        "title": "NXCTL Installation",
-        "foreground": "step15/nxctl_installation.sh"
+        "title": "NXCTL Installation"
       },
       {
 	"title": "Deletion",

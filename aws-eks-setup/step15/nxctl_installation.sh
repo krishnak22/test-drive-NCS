@@ -18,7 +18,7 @@ kubectl patch service nxctl-svc -n ncs-system --type='merge' -p '{
 BASE_URL=$(kubectl get svc nxctl-svc -n ncs-system -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo "BASE_URL=$BASE_URL" >> eks_inputs.env
 
-source eks_inputs.sh
+source eks_inputs.env
 kubectl patch cert nxctl-tls -n ncs-system --type='merge' -p "{
   \"spec\": {
     \"dnsNames\": [
