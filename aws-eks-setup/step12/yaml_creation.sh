@@ -739,7 +739,7 @@ spec:
     platform: aws
   subnetSpec:
     aosSubnetCidr: $AOS_SUBNET_CIDR
-    loadBalancerSubnetID: subnet-019d7dab8465a484b 
+    loadBalancerSubnetID: $LB_SUBNET_ID 
   platformParameters:
     aws:
       tags:

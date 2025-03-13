@@ -1,1 +1,1 @@
-`bfOpInputs.sh`{{exec}}
+`./opInput.sh`{{exec}}
