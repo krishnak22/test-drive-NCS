@@ -29,17 +29,14 @@
         "background": "step4/background.sh"
       },
       {
-        "title": "Create EKS Cluster",
-        "foreground": "step5/cluster_creation.sh"
+        "title": "Create EKS Cluster"
       },
       {
         "title": "Updating kubeconfig",
         "foreground": "step6/kubeconifg_update.sh"
       },
       {
-        "title": "Installing Calico",
-        "foreground": "step7/calico_installation.sh",
-        "background": "step7/bf_policy_creation.sh"
+        "title": "Installing Calico"
 
       },
       {
