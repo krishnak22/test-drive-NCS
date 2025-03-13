@@ -1,4 +1,3 @@
-#GET THE LOAD BALANCER READY
 kubectl patch service nxctl-svc -n ncs-system --type='merge' -p '{
   "metadata": {
     "annotations": {
@@ -19,7 +18,7 @@ kubectl patch service nxctl-svc -n ncs-system --type='merge' -p '{
 BASE_URL=$(kubectl get svc nxctl-svc -n ncs-system -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo "BASE_URL=$BASE_URL" >> eks_inputs.env
 
-# Update the tls certificate
+source eks_inputs.sh
 kubectl patch cert nxctl-tls -n ncs-system --type='merge' -p "{
   \"spec\": {
     \"dnsNames\": [
@@ -30,7 +29,6 @@ kubectl patch cert nxctl-tls -n ncs-system --type='merge' -p "{
 }"
 
 
-# DELETE THE POD
 POD_NAME=$(kubectl get pods -n ncs-system --no-headers -o custom-columns=":metadata.name" | grep "^nxctl-svc" | head -n 1)
 echo "POD_NAME=$POD_NAME" >> /root/eks_inputs.env
 source eks_inputs.env
@@ -39,7 +37,6 @@ kubectl delete pod $POD_NAME -n ncs-system
 CA_CERT=$(kubectl get secret nxctl-tls-secret -n ncs-system -o jsonpath='{.data.ca\.crt}')
 echo "CA_CERT=$CA_CERT" >> eks_inputs.env
 
-#GETTING .nxctlconfig file ready
 source eks_inputs.env
 cat << EOF > /root/.nxctlconfig
 version: 1737546277

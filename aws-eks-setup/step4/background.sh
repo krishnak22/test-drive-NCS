@@ -1,4 +1,4 @@
-cat << 'EOF' > inputs.sh
+cat << 'EOF' > clusterInputs.sh
 ENV_FILE="eks_inputs.env"
 
 # List of valid AWS regions
@@ -84,4 +84,4 @@ while true; do
 done
 EOF
 # Change the mode of inputs.sh to make it executable
-chmod +x inputs.sh
+chmod +x clusterInputs.sh
