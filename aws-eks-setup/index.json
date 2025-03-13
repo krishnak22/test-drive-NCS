@@ -15,38 +15,66 @@
       },
       {
         "title": "Set Up AWS Environment",
-        "text": "step2/step2.md",
-        "background": "step1/background_1.sh"
+        "text": "step2/step2.md"
+      },
+      {
+        "title": "Verify AWS Connectivity",
+        "text": "step3/step3.md"
       },
       {
         "title": "Assume an IAM Role",
-        "text": "step3/step3.md",
-        "foreground": "step3/foreground.sh"
+        "text": "step4/step4.md",
+        "foreground": "step4/foreground.sh"
       },
       {
-        "title": "Creating Input File",
-        "text": "step4/step4.md",
-        "background": "step4/background.sh"
+        "title": "Use Temporary Credentials",
+        "text": "step5/step5.md",
+        "background": "step5/background.sh"
+      },
+      {
+        "title": "Create EKS Cluster",
+        "foreground": "step6/foreground.sh"
       },
       {
         "title": "Updating kubeconfig",
-        "foreground": "step6/kubeconifg_update.sh"
+        "foreground": "step7/foreground.sh"
       },
       {
-        "title": "Taking Input for Brownfield Operator",
-        "background": "step11/bf_op_inputs.sh"
-      },
-      { 
-        "title": "Deployment",
-        "background": "step12/yaml_creation.sh"
+        "title": "Installing Calico",
+        "foreground": "step8/foreground.sh"
+
       },
       {
-        "title": "CSI Installation",
-        "foreground": "step14/csi_installation.sh"
+        "title": "Nodegroup Creation",
+        "foreground": "step9/foreground.sh"
       },
       {
-        "title": "NXCTL Installation",
-        "foreground": "step15/nxctl_installation.sh"
+        "title": "OIDC",
+        "foreground": "step10/foreground.sh"
+      },
+      {
+        "title": "SETTING UP INLINE POLICIES FOR SERVICE ACCOUNT ROLE",
+        "background": "step10.2/background.sh"
+      },
+      {
+        "title": "Creating Service Account",
+        "foreground": "step11.1/foreground.sh"
+      },
+      {
+        "title": "Storing variables in eks_inputs.env",
+        "foreground": "step11.1.1/background.sh"
+      },
+      {
+        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
+        "foreground": "step11.2/foreground.sh"
+      },
+      {
+        "title": "TAKING INPUTS TO SETUP THE OPERATOR YAML",
+        "background": "step12/foreground.sh"
+      },
+      {
+        "title": "CREATING YAML's FOR OPERATOR",
+        "background": "step13/background.sh"
       }
     ],
     "finish": {
