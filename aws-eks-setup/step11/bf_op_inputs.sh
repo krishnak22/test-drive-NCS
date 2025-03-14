@@ -1,4 +1,3 @@
-opInput.sh
 cat << 'EOF' > opInput.sh
 #!/bin/bash
 
