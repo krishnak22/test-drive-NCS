@@ -57,29 +57,25 @@ EOF
 
 kubectl apply -f postgres-config.yaml
 
-#Getting the node name 
-get_node_by_cidr() {
-    local target_cidr=$1
-    local nodes=($(kubectl get nodes -o jsonpath='{.items[*].metadata.name}'))
-    local IFS='.'
-    
-    for node in "${nodes[@]}"; do
-        if [[ $node =~ ip-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+) ]]; then
-            ip="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.${BASH_REMATCH[3]}.${BASH_REMATCH[4]}"
-            if ipcalc -c "$ip" "$target_cidr" 2>/dev/null; then
-                echo "$node"
-                return
-            fi
-        fi
-    done
-    
-    echo "No matching node found"
-}
-
+mapfile -t nodes < <(kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name} {.status.addresses[?(@.type=="InternalIP")].address}{"\n"}{end}')
 source eks_inputs.env
-target_cidr=$AOS_SUBNET_CIDR
-matching_node=$(get_node_by_cidr "$target_cidr")
-echo "AOS_NODE_NAME=$matching_node" >> eks_inputs.env
+subnet_cidr=$SUBNET_CIDR
+subnet_prefix=$(echo "$subnet_cidr" | cut -d'.' -f1-3)
+for node in "${nodes[@]}"; do
+    node_name=$(echo "$node" | awk '{print $1}')
+    node_ip=$(echo "$node" | awk '{print $2}')
+
+    if [[ -z "$node_ip" ]]; then
+        continue
+    fi
+
+    # Simple subnet match using string comparison
+    if [[ "$node_ip" == $subnet_prefix.* ]]; then
+        echo "Match found: Node $node_name with IP $node_ip matches subnet $subnet_cidr"
+        echo "SCHEDULER_NODE=$node_name" >> eks_inputs.env
+        break
+    fi
+done
 
 #Create Pod that will use the pvc
 source eks_inputs.env
@@ -89,8 +85,6 @@ kind: Pod
 metadata:
   name: postgres  # Sets Deployment name
 spec:
-  nodeSelector:
-    nodename: $AOS_NODE_NAME
   containers:
     - name: postgres
       image: postgres:10.1 # Sets Image
@@ -111,10 +105,14 @@ spec:
         limits:
           cpu: 100m
           memory: 100Mi
+  nodeName: $SCHEDULER_NODE
   volumes:
     - name: postgredb
       persistentVolumeClaim:
         claimName: postgresql-claim
+EOF
 
+kubectl apply -f Pod.yaml
 
+kubectl get pod postgres
 
