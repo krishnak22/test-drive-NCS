@@ -3,8 +3,7 @@
   "description": "A Killercoda scenario to install AWS CLI & eksctl, configure AWS, and assume a role.",
   "details": {
     "intro": {
-      "title": "Introduction",
-      "text": "intro/intro.md"
+      "title": "Introduction"
     },
     "steps": [
       {
