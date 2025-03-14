@@ -40,7 +40,7 @@
       },
       {
         "title": "NXCTL Installation",
-        "foreground": “step15/nxctl_installation.sh"
+        "foreground": "step15/nxctl_installation.sh"
       }
     ],
     "finish": {
