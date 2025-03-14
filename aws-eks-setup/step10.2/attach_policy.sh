@@ -1,5 +1,3 @@
-#!/bin/bash
-
 source eks_inputs.env
 
 echo "SERVICE_ACCOUNT_NAME=ncs-infra-sa-new-2" >>/root/eks_inputs.env
@@ -19,10 +17,8 @@ POLICY_FILE_2="/root/bf-policy-2.json"
 
 ROLE_NAME="$SA_ROLE_NAME"
 
-# Attach the first inline policy to the IAM role using the first policy JSON file
 aws iam put-role-policy --role-name "$ROLE_NAME" --policy-name "test-drive-ncs-bf-policy-1" --policy-document "file://$POLICY_FILE_1"
 
-# Attach the second inline policy to the IAM role using the second policy JSON file
 aws iam put-role-policy   --role-name "$ROLE_NAME" --policy-name "test-drive-ncs-bf-policy-2" --policy-document "file://$POLICY_FILE_2"
 
 source eks_inputs.env

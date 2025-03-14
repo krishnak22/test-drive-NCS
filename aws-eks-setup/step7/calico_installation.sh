@@ -18,5 +18,3 @@ spec:
   calicoNetwork:
     bgp: Disabled
 EOF
-
-
