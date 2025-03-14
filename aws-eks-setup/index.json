@@ -3,17 +3,19 @@
   "description": "A Killercoda scenario to install AWS CLI & eksctl, configure AWS, and assume a role.",
   "details": {
     "intro": {
-      "title": "Introduction"
+      "title": "Introduction",
+      "text": "intro/intro.md"
     },
     "steps": [
       {
         "title": "Install AWS CLI & eksctl",
+        "text": "step1/step1.md",
         "foreground": "step1/foreground.sh",
         "background": "step1/background.sh"
       },
       {
         "title": "Set Up AWS Environment",
-        "text": "step12/step12.md",
+        "text": "step2/step2.md",
         "background": "step1/background_1.sh"
       },
       {
@@ -22,38 +24,23 @@
         "foreground": "step3/foreground.sh"
       },
       {
-        "title": "Creating Input File",
-        "text": "step4/step4.md",
-        "background": "step4/background.sh"
+        "title": "Taking Input for Brownfield Operator",
+        "text": "step11/step11.md"
+	"background": "step11/bf_op_inputs.sh"
+      },
+      { 
+        "title": "Deployment",
+        "text": "step12/step12.md"
+	"background": "step12/yaml_creation.sh"
+	
       },
       {
-        "title": "Create EKS Cluster"
+        "title": "CSI Installation",
+        "foreground": "step14/csi_installation.sh"
       },
       {
-        "title": "Updating kubeconfig",
-        "foreground": "step6/kubeconifg_update.sh"
-      },
-      {
-        "title": "Installing Calico",
-        "foreground": "step7/calico_installation.sh",
-        "background": "step7/bf_policy_creation.sh"
-
-      },
-      {
-        "title": "Nodegroup Creation",
-        "foreground": "step8/nodegroup_creation.sh"
-      },
-      {
-        "title": "OIDC",
-        "foreground": "step9/oidc.sh"
-      },
-      {
-        "title": "Creating Service Account",
-        "foreground": "step10.1/sa_creation.sh"
-      },
-      {
-        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
-        "foreground": "step10.2/attach_policy.sh"
+        "title": "NXCTL Installation",
+        "foreground": “step15/nxctl_installation.sh"
       }
     ],
     "finish": {
