@@ -9,7 +9,6 @@
     "steps": [
       {
         "title": "Install AWS CLI & eksctl",
-        "text": "step1/step1.md",
         "foreground": "step1/foreground.sh",
         "background": "step1/background.sh"
       },
