@@ -1,7 +1,9 @@
-cat << 'EOF' > inputs1.sh
+opInput.sh
+cat << 'EOF' > opInput.sh
 #!/bin/bash
 
-# Function to take and validate non-empty input
+ENV_FILE="/root/eks_inputs.env"
+
 get_input() {
     local prompt_message="$1"
     local var_name="$2"
@@ -9,7 +11,7 @@ get_input() {
     while true; do
         read -p "$prompt_message: " input_value
         if [[ -n "$input_value" ]]; then
-            eval "$var_name='$input_value'"
+            echo "$var_name=$input_value" >> "$ENV_FILE"
             break
         else
             echo "Error: $prompt_message cannot be empty. Please enter a valid value."
@@ -17,7 +19,7 @@ get_input() {
     done
 }
 
-# Step 1: Prompt user for inputs (one at a time)
+# Ask for inputs and append them to eks_inputs.env
 get_input "Enter Worker Node Name" WORKER_NODE_NAME
 get_input "Enter Node Pool Name" NODE_POOL_NAME
 get_input "Enter Node Count" NODE_COUNT
@@ -30,20 +32,8 @@ get_input "Enter Replication Factor" REPLICATION_FACTOR
 get_input "Enter AOS Subnet CIDR" AOS_SUBNET_CIDR
 get_input "Enter Public Subnet ID" LB_SUBNET_ID
 
-# Step 2: Store inputs in environment file
-ENV_FILE="/root/eks_inputs.env"
-cat <<EOF >> "$ENV_FILE"
-WORKER_NODE_NAME=$WORKER_NODE_NAME
-NODE_POOL_NAME=$NODE_POOL_NAME
-NODE_COUNT=$NODE_COUNT
-AVAILABILITY_ZONE=$AVAILABILITY_ZONE
-INSTANCE_TYPE=$INSTANCE_TYPE
-SUBNET_CIDR=$SUBNET_CIDR
-NCS_INFRA_NAME=$NCS_INFRA_NAME
-NCS_CLUSTER_NAME=$NCS_CLUSTER_NAME
-REPLICATION_FACTOR=$REPLICATION_FACTOR
-AOS_SUBNET_CIDR=$AOS_SUBNET_CIDR
-LB_SUBNET_ID=$LB_SUBNET_ID >> "$ENV_FILE"
+chmod 600 "$ENV_FILE"  # Secure the file
+echo "All values saved to $ENV_FILE"
 EOF
 
-chmod +x inputs1.sh
+chmod +x opInput.sh
