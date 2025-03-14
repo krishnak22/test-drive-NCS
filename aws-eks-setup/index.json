@@ -25,12 +25,12 @@
       },
       {
         "title": "Taking Input for Brownfield Operator",
-        "text": "step11/step11.md"
+        "text": "step11/step11.md",
 	"background": "step11/bf_op_inputs.sh"
       },
       { 
         "title": "Deployment",
-        "text": "step12/step12.md"
+        "text": "step12/step12.md",
 	"background": "step12/yaml_creation.sh"
 	
       },
