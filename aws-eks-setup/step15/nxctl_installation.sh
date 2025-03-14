@@ -15,6 +15,7 @@ kubectl patch service nxctl-svc -n ncs-system --type='merge' -p '{
   }
 }'
 
+sleep 2
 BASE_URL=$(kubectl get svc nxctl-svc -n ncs-system -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo "BASE_URL=$BASE_URL" >> eks_inputs.env
 
