@@ -41,7 +41,6 @@ EOF
 
 kubectl apply -f pvc.yaml
 
-#Creating Config map
 cat << EOF > /root/postgres-config.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -69,7 +68,6 @@ for node in "${nodes[@]}"; do
         continue
     fi
 
-    # Simple subnet match using string comparison
     if [[ "$node_ip" == $subnet_prefix.* ]]; then
         echo "Match found: Node $node_name with IP $node_ip matches subnet $subnet_cidr"
         echo "SCHEDULER_NODE=$node_name" >> eks_inputs.env
@@ -77,7 +75,6 @@ for node in "${nodes[@]}"; do
     fi
 done
 
-#Create Pod that will use the pvc
 source eks_inputs.env
 cat << EOF > /root/Pod.yaml
 apiVersion: v1
