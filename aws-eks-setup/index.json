@@ -24,22 +24,13 @@
         "foreground": "step3/foreground.sh"
       },
       {
-        "title": "Taking Input for Brownfield Operator",
-	"text": "step11/step11.md",
-        "background": "step11/bf_op_inputs.sh"
-      },
-      { 
-        "title": "Deployment",
-	"text": "step12/step12.md",
-        "background": "step12/yaml_creation.sh"
+	"title": "App Deployment Setup",
+	"foreground": "step16/app_deployment.sh"
       },
       {
-        "title": "CSI Installation",
-        "foreground": "step14/csi_installation.sh"
-      },
-      {
-        "title": "NXCTL Installation",
-        "foreground": "step15/nxctl_installation.sh"
+	"title": "App Deployment",
+	"text": "step17/step18.md",
+	"foreground": "step17/sample_app.sh"
       }
     ],
     "finish": {
