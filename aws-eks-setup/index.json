@@ -24,13 +24,21 @@
         "foreground": "step3/foreground.sh"
       },
       {
-	"title": "App Deployment Setup",
-	"foreground": "step16/app_deployment.sh"
-      },
-      {
 	"title": "App Deployment",
 	"text": "step17/step18.md",
 	"background": "step17/sample_app.sh"
+      },
+      {
+	"title": "Deletion",
+	"foreground": "step18/deletion.sh"
+      },
+      {
+	"title": "Deletion",
+	"foreground": "step19/nodegroup-deletion.sh"
+      },
+      {
+	"title": "Deletion",
+	"foreground": "step20/cluster-deletion.sh"
       }
     ],
     "finish": {
