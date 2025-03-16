@@ -1,5 +1,4 @@
-cat << EOF >> /root/sample_app.md
-kubectl exec -it -n postgres-db postgres bash
+cat << EOF > /root/sample_app.md
 psql -U admin -d postgresdb
 CREATE TABLE cars (
   brand VARCHAR(255),

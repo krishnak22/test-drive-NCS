@@ -30,7 +30,7 @@
       {
 	"title": "App Deployment",
 	"text": "step17/step18.md",
-	"foreground": "step17/sample_app.sh"
+	"background": "step17/sample_app.sh"
       }
     ],
     "finish": {
