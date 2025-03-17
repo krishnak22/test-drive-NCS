@@ -17,9 +17,9 @@ kubectl patch service nxctl-svc -n ncs-system --type='merge' -p '{
 
 sleep 2
 BASE_URL=$(kubectl get svc nxctl-svc -n ncs-system -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
-echo "BASE_URL=$BASE_URL" >> eks_inputs.env
+echo "BASE_URL=$BASE_URL" >> /root/eks_inputs.env
 
-source eks_inputs.env
+source /root/eks_inputs.env
 kubectl patch cert nxctl-tls -n ncs-system --type='merge' -p "{
   \"spec\": {
     \"dnsNames\": [
@@ -37,9 +37,9 @@ kubectl delete pod $POD_NAME -n ncs-system
 
 sleep 10 
 CA_CERT=$(kubectl get secret nxctl-tls-secret -n ncs-system -o jsonpath='{.data.ca\.crt}')
-echo "CA_CERT=$CA_CERT" >> eks_inputs.env
+echo "CA_CERT=$CA_CERT" >> /root/eks_inputs.env
 
-source eks_inputs.env
+source /root/eks_inputs.env
 cat << EOF > /root/.nxctlconfig
 version: 1737546277
 nxctl_servers:
