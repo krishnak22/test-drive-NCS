@@ -14,7 +14,7 @@ source eks_inputs.env
 kubectl delete ncsinfra $NCS_INFRA_NAME -n $SERVICE_ACCOUNT_NAMESPACE
 
 source eks_inputs.env
-kubectl delete workernode $WORKERNODE_NAME -n $SERVICE_ACCOUNT_NAMESPACE
+kubectl delete workernode $WORKER_NODE_NAME -n $SERVICE_ACCOUNT_NAMESPACE
 
 kubectl delete CustomResourceDefinition ncsinfras.ncs.nutanix.com
 

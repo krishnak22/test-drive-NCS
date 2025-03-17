@@ -35,7 +35,7 @@ echo "POD_NAME=$POD_NAME" >> /root/eks_inputs.env
 source eks_inputs.env
 kubectl delete pod $POD_NAME -n ncs-system
 
-sleep 2 
+sleep 10 
 CA_CERT=$(kubectl get secret nxctl-tls-secret -n ncs-system -o jsonpath='{.data.ca\.crt}')
 echo "CA_CERT=$CA_CERT" >> eks_inputs.env
 
