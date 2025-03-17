@@ -21,8 +21,7 @@
       {
         "title": "Assume an IAM Role",
         "text": "step3/step3.md",
-        "foreground": "step3/foreground.sh",
-	"background": "step3/background.sh"
+        "foreground": "step3/foreground.sh"
       },
       {
         "title": "Creating Input File",
@@ -73,7 +72,8 @@
       },
       {
         "title": "NXCTL Installation",
-        "foreground": "step15.1/nxctl_installation.sh"
+        "foreground": "step15.1/nxctl_installation_foreground.sh",
+	"background": "step15.2/nxctl_installation_background.sh"
       },
       {
         "title": "App Deployment",
