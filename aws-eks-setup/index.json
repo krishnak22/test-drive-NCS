@@ -61,9 +61,7 @@
         "foreground": "step14/csi_installation.sh"
       },
       {
-        "title": "NXCTL Installation",
-        "foreground": "step15.1/nxctl_installation_foreground.sh",
-	"background": "step15.1/nxctl_installation_background.sh"
+        "title": "NXCTL Installation"
       },
       {
         "title": "App Deployment",
