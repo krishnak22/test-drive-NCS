@@ -2,8 +2,6 @@ curl -L -O https://github.com/nutanix/helm-releases/releases/download/nutanix-cs
 
 tar -xvf nutanix-csi-storage-3.2.0.tgz
 
-pip install ruamel.yaml
-
 cat << EOF > "/root/py_script_1.py"
 from ruamel.yaml import YAML
   
@@ -20,7 +18,8 @@ with open("/root/nutanix-csi-storage/values.yaml", "w") as f:
     yaml.dump(data, f)
 EOF
 
-VIP=$(kubectl get ncscluster testdrive-ncs -n ncs-system -o jsonpath='{.metadata.annotations.vip}')
+source eks_inputs.env
+VIP=$(kubectl get ncscluster $NCS_CLUSTER_NAME -n ncs-system -o jsonpath='{.metadata.annotations.vip}')
 echo "VIP=$VIP" >> /root/eks_inputs.env
 
 PASSWORD=$(kubectl get -n ncs-system secrets/testdrive-ncs-init-creds -ogo-template='{{index .data "cvm-creds" | base64decode}}' | base64 -d)
@@ -43,14 +42,15 @@ metadata:
 data:
  key: $KEY
 EOF
-
+clear
 kubectl apply -f ntnx-secret.yaml
 
+clear
 kubectl get nodes -o wide | awk 'NR>1 {print $6}' | nl -v1 | awk '{print "node"$1"="$2}' >> eks_inputs.env
 
 source eks_inputs.env
 
-SECURITY_GROUP_ID=$(aws ec2 describe-security-groups --region us-west-2 --filters "Name=tag:Name,Values=ncs-testdrive-ncs-aos-external" --query "SecurityGroups[0].GroupId" --output text)
+SECURITY_GROUP_ID=$(aws ec2 describe-security-groups --region us-west-2 --filters "Name=tag:Name,Values=ncs-$NCS_CLUSTER_NAME-aos-external" --query "SecurityGroups[0].GroupId" --output text)
 echo "SECURITY_GROUP_ID=$SECURITY_GROUP_ID" >> /root/eks_inputs.env
 
 source eks_inputs.env
@@ -65,7 +65,7 @@ for key in $(compgen -A variable | grep 'node'); do
         --region "$REGION"
 done
 
-
+clear
 helm install -n ntnx-system -f nutanix-csi-storage/values.yaml nutanix-csi ./nutanix-csi-storage
 
 kubectl get pod -n ntnx-system
