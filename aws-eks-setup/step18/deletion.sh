@@ -8,7 +8,8 @@ kubectl delete storageclass base-sc
 
 helm delete nutanix-csi -n ntnx-system
 
-kubectl delete ncscluster testdrive-ncs -n ncs-system
+source eks_inputs.env
+kubectl delete ncscluster $NCS_CLUSTER_NAME -n ncs-system
 
 source eks_inputs.env
 kubectl delete ncsinfra $NCS_INFRA_NAME -n $SERVICE_ACCOUNT_NAMESPACE
