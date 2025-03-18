@@ -54,14 +54,27 @@
       },
       { 
         "title": "Deployment",
-        "background": "step12.1/yaml_creation.sh"
       },
       {
         "title": "CSI Installation",
-        "foreground": "step14/csi_installation.sh"
       },
       {
         "title": "NXCTL Installation"
+      },
+      {
+	"title": "App Deployment: 1 (Storage Class Creation)",
+	"text": "step16.1/storage_class.md",
+	"foreground": " step16.1/storage_class.sh"
+      },
+      {
+	"title": "App Deployment: 2 (PVC Creation)",
+	"text": "step16.2/pvc_creation.md",
+	"foreground": "step16.2/pvc_creation.sh"
+      },
+      {
+	"title": "App Deployment: 3 (Postgres Pod Creation)",
+	"text": "step16.3/pod_creation.md",
+	"foreground": "step16.3/app_pod_creation.sh"
       },
       {
         "title": "App Deployment",
