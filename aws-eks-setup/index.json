@@ -20,7 +20,7 @@
       },
       {
         "title": "Assume an IAM Role",
-        "text": "step3/step3.md",
+        "text": "step15.2/nxctl_training.md",
         "foreground": "step3/foreground.sh"
       },
       {
