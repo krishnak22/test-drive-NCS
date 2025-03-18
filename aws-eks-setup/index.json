@@ -56,7 +56,8 @@
         "title": "Deployment"
       },
       {
-        "title": "CSI Installation"
+        "title": "CSI Installation",
+	"foreground": "step14/csi_installation.sh"
       },
       {
         "title": "NXCTL Installation"
