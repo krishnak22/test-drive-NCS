@@ -64,7 +64,7 @@
       {
 	"title": "App Deployment: 1 (Storage Class Creation)",
 	"text": "step16.1/storage_class.md",
-	"foreground": " step16.1/storage_class.sh"
+	"foreground": "step16.1/storage_class.sh"
       },
       {
 	"title": "App Deployment: 2 (PVC Creation)",
