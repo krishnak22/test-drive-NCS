@@ -89,11 +89,11 @@
       {
         "title": "NXCTL Installation",
 	"text": "step15.1/nxctl_intro.md",
-	"foreground": step15.1/nxctl_installation_foreground.sh"
+	"foreground": "step15.1/nxctl_installation_foreground.sh"
       },
       {
 	"title": "NXCTL COMMANDS",
-	"text": "step15.2/nxctl_training.md
+	"text": "step15.2/nxctl_training.md"
       },
       
       {
