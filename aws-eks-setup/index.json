@@ -38,7 +38,7 @@
       {
         "title": "Installing Calico",
 	"foreground": "step7/calico_installation.sh",
-	"background: "step7/bf_policy_creation.sh"
+	"background": "step7/bf_policy_creation.sh"
       },
       {
         "title": "Nodegroup Creation",
