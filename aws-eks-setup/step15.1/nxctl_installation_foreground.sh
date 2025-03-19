@@ -15,7 +15,7 @@ kubectl patch service nxctl-svc -n ncs-system --type='merge' -p '{
   }
 }'
 
-sleep 5
+sleep 30
 BASE_URL=$(kubectl get svc nxctl-svc -n ncs-system -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo "BASE_URL=$BASE_URL" >> eks_inputs.env
 
@@ -35,7 +35,7 @@ echo "POD_NAME=$POD_NAME" >> /root/eks_inputs.env
 source eks_inputs.env
 kubectl delete pod $POD_NAME -n ncs-system
 
-sleep 10 
+sleep 30 
 CA_CERT=$(kubectl get secret nxctl-tls-secret -n ncs-system -o jsonpath='{.data.ca\.crt}')
 echo "CA_CERT=$CA_CERT" >> eks_inputs.env
 
