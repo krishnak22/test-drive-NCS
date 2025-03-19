@@ -6,7 +6,7 @@
 
 `kubectl apply -f bf-nodegroup.yaml`{{exec}}
 
-**The execution generally takes 3-4 min, check the nodes atatus by runnint the following command.**
+**The execution generally takes 3-4 min, check the nodes status by running the following command.**
 
 `kubectl describe workernode $WORKER_NODE_NAME -n ncs-infra-deployment-operator-system`{{exec}}
 
