@@ -1,0 +1,3 @@
+# NXCTL INTRODUCTION
+
+**NXCTL is a command-line interface (CLI) to view, manage, and control operations on the Cloud Native AOS clusters. The nxctl CLI is a lightweight interface for commands that trigger requests to the nxctl API service. The nxctl API service operates independently in the EKS cluster with the Cloud Native AOS cluster. The nxctl API service communicates with both the Cloud Native AOS cluster and the AWS EKS cluster to perform operations such as expanding a cluster by adding nodes to the Cloud Native AOS cluster, removing nodes from the Cloud Native AOS cluster, or destroying the cluster.**

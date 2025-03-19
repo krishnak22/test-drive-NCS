@@ -15,12 +15,11 @@
       },
       {
         "title": "Set Up AWS Environment",
-        "text": "step2/step2.md",
-        "background": "step1/background_1.sh"
+        "text": "step2/step2.md"
       },
       {
         "title": "Assume an IAM Role",
-        "text": "step15.2/nxctl_training.md",
+        "text": "step3/step3.md",
         "foreground": "step3/foreground.sh"
       },
       {
@@ -29,39 +28,74 @@
         "background": "step4/background.sh"
       },
       {
-        "title": "Create EKS Cluster"
+        "title": "Create EKS Cluster",
+	"foreground": "step5/cluster_creation.sh"
       },
       {
-        "title": "Updating kubeconfig"
+        "title": "Updating kubeconfig",
+	"foreground": "step6/kubeconifg_update.sh"
       },
       {
-        "title": "Installing Calico"
+        "title": "Installing Calico",
+	"foreground": "step7/calico_installation.sh",
+	"background: "step7/bf_policy_creation.sh"
       },
       {
-        "title": "Nodegroup Creation"
+        "title": "Nodegroup Creation",
+	"foreground": "step8/nodegroup_creation.sh"
       },
       {
-        "title": "OIDC"
+        "title": "OIDC",
+	"foreground": "step9/oidc.sh"
       },
       {
-        "title": "Creating Service Account"
+        "title": "Creating Service Account",
+	"foreground": "step10.1/sa_creation.sh"
       },
       {
-        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE"
+        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
+	"foreground": "step10.2/attach_policy.sh"
       },
       {
-        "title": "Taking Input for Brownfield Operator"
+        "title": "Taking Input for Brownfield Operator",
+	"text": "step11/step11.md",
+	"foreground": "step11/bf_op_inputs.sh"
       },
       { 
-        "title": "Deployment"
+        "title": "Deployment-1",
+	"text": "step12.1/bf_operator.md",
+	"background": "step12.1/yaml_creation.sh"
+      },
+      {
+        "title": "Deployment-2",
+        "text": "step12.2/bf_operator.md"
+      },
+      {
+        "title": "Deployment-3",
+        "text": "step12.3/bf_nodegroup.md"
+      },
+      {
+        "title": "Deployment-4",
+        "text": "step12.4/bf_infra.md"
+      },
+      {
+        "title": "Deployment-5",
+        "text": "step12.5/ncs-cr.md"
       },
       {
         "title": "CSI Installation",
 	"foreground": "step14/csi_installation.sh"
       },
       {
-        "title": "NXCTL Installation"
+        "title": "NXCTL Installation",
+	"text": "step15.1/nxctl_intro.md",
+	"foreground": step15.1/nxctl_installation_foreground.sh"
       },
+      {
+	"title": "NXCTL COMMANDS",
+	"text": "step15.2/nxctl_training.md
+      },
+      
       {
 	"title": "App Deployment: 1 (Storage Class Creation)",
 	"text": "step16.1/storage_class.md",
