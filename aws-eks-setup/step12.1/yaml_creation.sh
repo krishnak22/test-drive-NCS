@@ -753,7 +753,7 @@ cat<< EOF > "$TARGET_DIR/ncs-cr.yaml"
 apiVersion: ncs.nutanix.com/v1alpha1
 kind: NcsCluster
 metadata:
-  name: testdrive-ncs
+  name: $NCS_CLUSTER_NAME
   namespace: ncs-system
 spec:
   aosStateDiskSize: 50Gi
