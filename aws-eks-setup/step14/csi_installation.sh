@@ -2,8 +2,6 @@ curl -L -O https://github.com/nutanix/helm-releases/releases/download/nutanix-cs
 
 tar -xvf nutanix-csi-storage-3.2.0.tgz
 
-apt install -y ruamel.yaml
-
 cat << EOF > "/root/py_script_1.py"
 from ruamel.yaml import YAML
   
@@ -33,7 +31,6 @@ KEY=$(echo -n "$VIP:9440:admin:$PASSWORD" | base64)
 echo "KEY=$KEY" >> /root/eks_inputs.env
 
 python py_script_1.py
-clear
 source eks_inputs.env
 TARGET_DIR="/root"
 cat <<EOF > "$TARGET_DIR/ntnx-secret.yaml"
@@ -51,7 +48,6 @@ kubectl apply -f ntnx-secret.yaml
 kubectl get nodes -o wide | awk 'NR>1 {print $6}' | nl -v1 | awk '{print "node"$1"="$2}' >> eks_inputs.env
 
 source eks_inputs.env
-clear
 SECURITY_GROUP_ID=$(aws ec2 describe-security-groups --region us-west-2 --filters "Name=tag:Name,Values=ncs-$NCS_CLUSTER_NAME-aos-external" --query "SecurityGroups[0].GroupId" --output text)
 echo "SECURITY_GROUP_ID=$SECURITY_GROUP_ID" >> /root/eks_inputs.env
 
@@ -67,7 +63,6 @@ for key in $(compgen -A variable | grep 'node'); do
         --region "$REGION"
 done
 
-clear
 
 helm install -n ntnx-system -f nutanix-csi-storage/values.yaml nutanix-csi ./nutanix-csi-storage
 
