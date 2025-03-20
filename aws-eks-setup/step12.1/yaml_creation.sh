@@ -7,7 +7,7 @@ source eks_inputs.env
 TARGET_DIR="/root"  
 
 # Create the YAML file at the target directory
-cat <<EOF > "$TARGET_DIR/bf-operator.yaml"
+cat <<EOF > "$TARGET_DIR/cn-aos-operator.yaml"
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
@@ -691,11 +691,11 @@ metadata:
   labels:
     app.kubernetes.io/name: ncs-infra-deployment-operator
     app.kubernetes.io/managed-by: kustomize
-  name: $CLUSTER_NAME-cn-aos-wn
+  name: $WORKER_NODE_NAME
   namespace: $SERVICE_ACCOUNT_NAMESPACE
 spec:
   accountID: "353502843997"
-  nodePoolName: $CLUSTER_NAME-cn-aos-np
+  nodePoolName: $NODE_POOL_NAME
   clusterName: $CLUSTER_NAME
   nodeCount: $NODE_COUNT
   availabilityZone: $AVAILABILITY_ZONE
@@ -724,11 +724,11 @@ metadata:
   labels:
     app.kubernetes.io/name: ncs-infra-deployment-operator
     app.kubernetes.io/managed-by: kustomize
-  name: $CLUSTER_NAME-cn-aos-infra
+  name: $NCS_INFRA_NAME
   namespace: $SERVICE_ACCOUNT_NAMESPACE
 spec:
   ncsClusterSpec:
-    name: $CLUSTER_NAME-cn-aos-cl
+    name: $NCS_CLUSTER_NAME
     nodeCount: $NODE_COUNT
     replicationFactor: 2
     availabilityZone: $AVAILABILITY_ZONE
@@ -753,7 +753,7 @@ cat<< EOF > "$TARGET_DIR/cn-aos-cr.yaml"
 apiVersion: ncs.nutanix.com/v1alpha1
 kind: NcsCluster
 metadata:
-  name: $CLUSTER_NAME-cn-aos-cl
+  name: $NCS_CLUSTER_NAME
   namespace: ncs-system
 spec:
   aosStateDiskSize: 50Gi
@@ -767,7 +767,7 @@ spec:
     - key: eks.amazonaws.com/nodegroup
       operator: In
       values:
-      - $CLUSTER_NAME-cn-aos-np
+      - $NODE_POOL_NAME
   replicationFactor: $REPLICATION_FACTOR
   snapshotStorageClass: ncs-aos-state
 EOF
