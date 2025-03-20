@@ -52,8 +52,7 @@
       {
         "title": "Taking Input for Brownfield Operator",
         "text": "step11/step11.md",
-        "background": "step11/bf_op_inputs.sh",
-	"background": "step11/operator_inputs.sh"
+        "background": "step11/bf_op_inputs.sh"
       },
       { 
         "title": "Deployment-1",
