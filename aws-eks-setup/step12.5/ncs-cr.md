@@ -1,8 +1,8 @@
-# Deploying the NCS CLUSTER
+# Deploying the CN-AOS CLUSTER
 
-**To deploy the NCS Cluster run the following command.**
+**To deploy the CN-AOS Cluster run the following command.**
 
-`kubectl apply -f ncs-cr.yaml`{{exec}}
+`kubectl apply -f cn-aos-cr.yaml`{{exec}}
 
 **Generally it takes 16 - 18 min to get into running state, to check the status run the following command.**
 

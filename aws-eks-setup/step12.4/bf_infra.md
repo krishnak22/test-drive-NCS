@@ -2,7 +2,7 @@
 
 **To start the infra deployment run the following command.**
 
-`kubectl apply -f bf-infra.yaml`{{exec}}
+`kubectl apply -f cn-aos-infra.yaml`{{exec}}
 
 **To check the status of infra deployment, run the following command.**  
 

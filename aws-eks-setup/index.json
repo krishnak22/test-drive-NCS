@@ -28,25 +28,33 @@
         "background": "step4/background.sh"
       },
       {
-        "title": "Create EKS Cluster"
+        "title": "Create EKS Cluster",
+        "foreground": "step5/cluster_creation.sh"
       },
       {
-        "title": "Updating kubeconfig"
+        "title": "Updating kubeconfig",
+        "foreground": "step6/kubeconifg_update.sh"
       },
       {
-        "title": "Installing Calico"
+        "title": "Installing Calico",
+        "foreground": "step7/calico_installation.sh",
+        "background": "step7/bf_policy_creation.sh"
       },
       {
-        "title": "Nodegroup Creation"
+        "title": "Nodegroup Creation",
+        "foreground": "step8/nodegroup_creation.sh"
       },
       {
-        "title": "OIDC"
+        "title": "OIDC",
+        "foreground": "step9/oidc.sh"
       },
       {
-        "title": "Creating Service Account"
+        "title": "Creating Service Account",
+        "foreground": "step10.1/sa_creation.sh"
       },
       {
-        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE"
+        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
+        "foreground": "step10.2/attach_policy.sh"
       },
       {
         "title": "Taking Input for Brownfield Operator",
