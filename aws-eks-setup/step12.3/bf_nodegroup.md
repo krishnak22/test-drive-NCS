@@ -1,10 +1,10 @@
 # Creating the Nodegroup
 
-**In this step we are going to apply the bf-nodegroup.yaml, this will initiate the process of cretaing nodegroup.**
+**In this step we are going to apply the cn-aos-nodegroup.yaml, this will initiate the process of cretaing nodegroup.**
 
-**To apply the bf-nodegroup.yaml, run the following command.**
+**To apply the cn-aos-nodegroup.yaml, run the following command.**
 
-`kubectl apply -f bf-nodegroup.yaml`{{exec}}
+`kubectl apply -f cn-aos-nodegroup.yaml`{{exec}}
 
 **The execution generally takes 3-4 min, check the nodes status by running the following command.**
 

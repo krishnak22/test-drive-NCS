@@ -1,7 +1,7 @@
-# Insatlling the bf-operator.yaml
+# Insatlling the cn-aos-operator.yaml
 
-**To install the bf-operator.yaml run the following command.**   
+**To install the cn-aos-operator.yaml run the following command.**   
 
-`kubectl apply -f bf-operator.yaml`{{exec}}
+`kubectl apply -f cn-aos-operator.yaml`{{exec}}
 
 

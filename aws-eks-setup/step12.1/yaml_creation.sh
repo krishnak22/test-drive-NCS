@@ -684,18 +684,18 @@ spec:
 EOF
 
 #CREATE BF NODEGROUP  YAML FILE
-cat <<EOF > "$TARGET_DIR/bf-nodegroup.yaml"
+cat <<EOF > "$TARGET_DIR/cn-aos-nodegroup.yaml"
 apiVersion: ncs.nutanix.com/v1alpha1
 kind: WorkerNode
 metadata:
   labels:
     app.kubernetes.io/name: ncs-infra-deployment-operator
     app.kubernetes.io/managed-by: kustomize
-  name: $WORKER_NODE_NAME
+  name: $CLUSTER_NAME-cn-aos-wn
   namespace: $SERVICE_ACCOUNT_NAMESPACE
 spec:
   accountID: "353502843997"
-  nodePoolName: $NODE_POOL_NAME
+  nodePoolName: $CLUSTER_NAME-cn-aos-np
   clusterName: $CLUSTER_NAME
   nodeCount: $NODE_COUNT
   availabilityZone: $AVAILABILITY_ZONE
@@ -717,20 +717,20 @@ EOF
 
 
 #CREATE INFRA YAML FILE
-cat <<EOF > "$TARGET_DIR/bf-infra.yaml"
+cat <<EOF > "$TARGET_DIR/cn-aos-infra.yaml"
 apiVersion: ncs.nutanix.com/v1alpha1
 kind: NcsInfra
 metadata:
   labels:
     app.kubernetes.io/name: ncs-infra-deployment-operator
     app.kubernetes.io/managed-by: kustomize
-  name: $NCS_INFRA_NAME
+  name: $CLUSTER_NAME-cn-aos-infra
   namespace: $SERVICE_ACCOUNT_NAMESPACE
 spec:
   ncsClusterSpec:
-    name: $NCS_CLUSTER_NAME
+    name: $CLUSTER_NAME-cn-aos-cl
     nodeCount: $NODE_COUNT
-    replicationFactor: $REPLICATION_FACTOR
+    replicationFactor: 2
     availabilityZone: $AVAILABILITY_ZONE
   accountID: "353502843997"
   kubernetesClusterSpec:
@@ -749,11 +749,11 @@ EOF
 
 
 #CREATE NCS-CR.YAML FILE
-cat<< EOF > "$TARGET_DIR/ncs-cr.yaml"
+cat<< EOF > "$TARGET_DIR/cn-aos-cr.yaml"
 apiVersion: ncs.nutanix.com/v1alpha1
 kind: NcsCluster
 metadata:
-  name: $NCS_CLUSTER_NAME
+  name: $CLUSTER_NAME-cn-aos-cl
   namespace: ncs-system
 spec:
   aosStateDiskSize: 50Gi
@@ -767,7 +767,7 @@ spec:
     - key: eks.amazonaws.com/nodegroup
       operator: In
       values:
-      - $NODE_POOL_NAME
+      - $CLUSTER_NAME-cn-aos-np
   replicationFactor: $REPLICATION_FACTOR
   snapshotStorageClass: ncs-aos-state
 EOF
