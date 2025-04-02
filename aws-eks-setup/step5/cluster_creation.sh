@@ -5,6 +5,6 @@ fi
 source eks_inputs.env
 
 echo -e "\nStarting EKS cluster creation..."
-eksctl create cluster --name "$CLUSTER_NAME" --region "$REGION" --vpc-private-subnets "$VPC_SUBNETS" --without-nodegroup --tags primary-owner="$PRIMARY_OWNER"
+eksctl create cluster --name "$CLUSTER_NAME" --region "$REGION" --version 1.30 --vpc-private-subnets "$VPC_SUBNETS" --without-nodegroup --tags primary-owner="$PRIMARY_OWNER"
 
 
