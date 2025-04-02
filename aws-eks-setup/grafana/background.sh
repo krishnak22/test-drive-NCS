@@ -16,5 +16,3 @@ EOF
 
 kubectl apply -f PROMETHEUS_SC --context $CLUSTER_NAME
 helm install -f ${path.module}/scripts/yaml-files/kube-prometheus-stack-values.yaml prometheus prometheus-community/kube-prometheus-stack --kube-context=${local.eks_cluster_arn} -n monitoring --version ${local.prometheus_helm_chart_version}
-
-
