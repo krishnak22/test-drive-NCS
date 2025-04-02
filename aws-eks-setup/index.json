@@ -1,6 +1,6 @@
 {
-  "title": "test-drive-CN-AOS",
-  "description": " --- ",
+  "title": "test-drive-NCS",
+  "description": "A Killercoda scenario to install AWS CLI & eksctl, configure AWS, and assume a role.",
   "details": {
     "intro": {
       "title": "Introduction",
@@ -28,35 +28,43 @@
         "background": "step4/background.sh"
       },
       {
-        "title": "Create EKS Cluster"
+        "title": "Create EKS Cluster",
+        "foreground": "step5/cluster_creation.sh"
       },
       {
         "title": "Updating kubeconfig",
         "foreground": "step6/kubeconifg_update.sh"
       },
       {
-        "title": "Installing Calico"
+        "title": "Installing Calico",
+        "foreground": "step7/calico_installation.sh",
+        "background": "step7/bf_policy_creation.sh"
       },
       {
-        "title": "Nodegroup Creation"
+        "title": "Nodegroup Creation",
+        "foreground": "step8/nodegroup_creation.sh"
       },
       {
-        "title": "OIDC"
+        "title": "OIDC",
+        "foreground": "step9/oidc.sh"
       },
       {
-        "title": "Creating Service Account"
+        "title": "Creating Service Account",
+        "foreground": "step10.1/sa_creation.sh"
       },
       {
-        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE"
+        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
+        "foreground": "step10.2/attach_policy.sh"
       },
       {
         "title": "Taking Input for Brownfield Operator",
         "text": "step11/step11.md",
-        "background": "step11/bf_op_inputs.sh"
+        "foreground": "step11/bf_op_inputs.sh",
+        "background": "step11/operator_inputs.sh"
       },
       { 
         "title": "Deployment-1",
-        "text": "step12.1/cn_aos_operator.md",
+        "text": "step12.1/bf_operator.md",
         "background": "step12.1/yaml_creation.sh"
       },
       {

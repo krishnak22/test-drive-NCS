@@ -768,6 +768,6 @@ spec:
       operator: In
       values:
       - $NODE_POOL_NAME
-  replicationFactor: $REPLICATION_FACTOR
+  replicationFactor: 2
   snapshotStorageClass: ncs-aos-state
 EOF
