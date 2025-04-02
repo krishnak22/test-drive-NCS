@@ -64,7 +64,7 @@
       },
       { 
         "title": "Deployment-1",
-        "text": "step12.1/bf_operator.md",
+        "text": "step12.1/cn_aos_operator.md",
         "background": "step12.1/yaml_creation.sh"
       },
       {

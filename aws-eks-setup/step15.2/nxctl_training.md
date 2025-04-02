@@ -14,7 +14,7 @@ This training will help you get familiar with the commands available in our CLI.
 
 **To list all CN-AOS Clusters from given namespace. If no namespace is provided then ncs-system is used.**  
 
-`nxctl cluster list`{{help}}
+`nxctl cluster list`{{exec}}
 
 **To get the details of CN-AOS Cluster. Cluster Name should bepassed in the command arguments. The details include ClusterName, ClusterIP, number of nodes etc.**  
 
