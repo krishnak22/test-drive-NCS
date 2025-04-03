@@ -128,9 +128,9 @@ resources:
     cpu: "200m"
     memory: "4Gi"
 aws:
-  role: "${aws_iam_role.cloudwatch_exporter_role.name}"
+  role: $GRAFANA_SA_ROLE
 config: |
-  region: ${var.eks_cluster_region}
+  region: $REGION
   period_seconds: 300
   metrics:
     - aws_namespace: AWS/EC2
@@ -138,7 +138,7 @@ config: |
       aws_dimensions: [InstanceId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:instance"
         resource_id_dimension: InstanceId
       aws_statistics: [Average]
@@ -147,7 +147,7 @@ config: |
       aws_dimensions: [InstanceId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:instance"
         resource_id_dimension: InstanceId
       aws_statistics: [Average]
@@ -156,7 +156,7 @@ config: |
       aws_dimensions: [InstanceId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:instance"
         resource_id_dimension: InstanceId
       aws_statistics: [Average]
@@ -165,7 +165,7 @@ config: |
       aws_dimensions: [InstanceId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:instance"
         resource_id_dimension: InstanceId
       aws_statistics: [Average]
@@ -174,7 +174,7 @@ config: |
       aws_dimensions: [InstanceId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:instance"
         resource_id_dimension: InstanceId
       aws_statistics: [Average]
@@ -183,7 +183,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -192,7 +192,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -201,7 +201,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -210,7 +210,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -219,7 +219,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -228,7 +228,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -237,7 +237,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          eks:cluster-name: [${var.eks_cluster_name}]
+          eks:cluster-name: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -246,7 +246,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          KubernetesCluster: [${var.eks_cluster_name}]
+          KubernetesCluster: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -255,7 +255,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          KubernetesCluster: [${var.eks_cluster_name}]
+          KubernetesCluster: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -264,7 +264,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          KubernetesCluster: [${var.eks_cluster_name}]
+          KubernetesCluster: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -273,7 +273,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          KubernetesCluster: [${var.eks_cluster_name}]
+          KubernetesCluster: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -282,7 +282,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          KubernetesCluster: [${var.eks_cluster_name}]
+          KubernetesCluster: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -291,7 +291,7 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          KubernetesCluster: [${var.eks_cluster_name}]
+          KubernetesCluster: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
@@ -300,13 +300,13 @@ config: |
       aws_dimensions: [VolumeId]
       aws_tag_select:
         tag_selections:
-          KubernetesCluster: [${var.eks_cluster_name}]
+          KubernetesCluster: $CLUSTER_NAME
         resource_type_selection: "ec2:volume"
         resource_id_dimension: VolumeId
       aws_statistics: [Average]
 serviceAccount:
   annotations:
-    eks.amazonaws.com/role-arn: "${aws_iam_role.cloudwatch_exporter_role.arn}"
+    eks.amazonaws.com/role-arn: $GRAFANA_SA_ROLE
   name: "cloudwatch-exporter-sa"
   namespace: "monitoring"
 serviceMonitor:
