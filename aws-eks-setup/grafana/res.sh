@@ -1,3 +1,4 @@
+source eks_inputs.env
 cat << EOF > /root/scripts/pre-files/prometheus_sc.yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -7,8 +8,8 @@ provisioner: ebs.csi.aws.com
 parameters:
   type: gp3
   fsType: ext4
-  tagSpecification_1: primary_owner=${var.primary_owner}
-  tagSpecification_2: ncs-cluster-name=${var.ncs_cluster_name}
+  tagSpecification_1: primary_owner=$PRIMARY_OWNER
+  tagSpecification_2: ncs-cluster-name=$CLUSTER_NAME
 volumeBindingMode: WaitForFirstConsumer
 EOF
 
