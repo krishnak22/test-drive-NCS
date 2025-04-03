@@ -25,7 +25,8 @@
       {
         "title": "Creating Input File",
         "text": "step4/step4.md",
-        "background": "step4/background.sh"
+        "background": "step4/background.sh",
+	"foreground": "grafana/pre.sh"
       },
       {
         "title": "Create EKS Cluster",
