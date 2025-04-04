@@ -316,3 +316,4 @@ serviceMonitor:
     release: "prometheus"
   telemetryPath: "/metrics"
   timeout: "30s"
+EOF
