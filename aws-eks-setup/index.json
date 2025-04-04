@@ -15,8 +15,7 @@
       },
       {
         "title": "Set Up AWS Environment",
-        "text": "step2/step2.md",
-	"background": "step12.2/grafana_pre.sh"
+        "text": "step2/step2.md"
       },
       {
         "title": "Assume an IAM Role",
@@ -69,15 +68,18 @@
       },
       {
         "title": "Deployment-2",
-        "text": "step12.2/bf_operator.md"
+        "text": "step12.2/bf_operator.md",
+	"background": "step12.2/grafana_pre.sh"
       },
       {
         "title": "Deployment-3",
-        "text": "step12.3/bf_nodegroup.md"
+        "text": "step12.3/bf_nodegroup.md",
+	"background": "step12.3/grafana_res.sh"
       },
       {
         "title": "Deployment-4",
-        "text": "step12.4/bf_infra.md"
+        "text": "step12.4/bf_infra.md",
+	"background": "step12.4/background.sh"
       },
       {
         "title": "Deployment-5",
