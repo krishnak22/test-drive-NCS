@@ -92,8 +92,10 @@
         "text": "step15.1/nxctl_intro.md",
         "foreground": "step15.1/nxctl_installation_foreground.sh"
       },
+      {
+        "title": "NXCTL COMMANDS",
         "text": "step15.2/nxctl_training.md"
-      },
+      }, 
       {
         "title": "App Deployment: 1 (Storage Class Creation)",
         "text": "step16.1/storage_class.md",
