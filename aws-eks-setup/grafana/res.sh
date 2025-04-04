@@ -128,7 +128,7 @@ resources:
     cpu: "200m"
     memory: "4Gi"
 aws:
-  role: "arn:aws:iam::353502843997:role/ktd-ncs-3apr-cw-role"
+  role: $CW_ROLE_ARN
 config: |
   region: $REGION
   period_seconds: 300
@@ -306,7 +306,7 @@ config: |
       aws_statistics: [Average]
 serviceAccount:
   annotations:
-    eks.amazonaws.com/role-arn: "arn:aws:iam::353502843997:role/ktd-ncs-3apr-cw-role"
+    eks.amazonaws.com/role-arn: $CW_ROLE_ARN
   name: "cloudwatch-exporter-sa"
   namespace: "monitoring"
 serviceMonitor:
