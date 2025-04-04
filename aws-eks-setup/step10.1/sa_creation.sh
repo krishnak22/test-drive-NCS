@@ -20,7 +20,7 @@ cat <<EOF > trust_policy.json
   ]
 }
 EOF
-
+source eks_inputs.env
 aws iam create-role --role-name $CLUSTER_NAME-cw-grafana-role --assume-role-policy-document file://trust_policy.json
 aws iam attach-role-policy --role-name $CLUSTER_NAME-cw-grafana-role --policy-arn arn:aws:iam::353502843997:policy/cn-aos-td-cw-grafana-policy
 rm trust_policy.json
