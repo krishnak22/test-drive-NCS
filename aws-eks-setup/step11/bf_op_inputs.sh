@@ -31,6 +31,7 @@ get_input "Enter Instance Type" INSTANCE_TYPE
 get_input "Enter Worker Node Subnet CIDR" SUBNET_CIDR
 get_input "Enter AOS Subnet CIDR" AOS_SUBNET_CIDR
 get_input "Enter Public Subnet ID" LB_SUBNET_ID
+get_input "Enter your own public IP" USER_IP
 
 chmod 600 "$ENV_FILE"  # Secure the file
 echo "All values saved to $ENV_FILE"
