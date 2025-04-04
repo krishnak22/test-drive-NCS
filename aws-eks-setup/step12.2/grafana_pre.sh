@@ -1,10 +1,10 @@
 base_dir="scripts"
 subdirs=("yaml-files" "json-files" "pre-files")
 
-mkdir -p "$base_dir"
+mkdir -p "/root/$base_dir"
 
 for subdir in "${subdirs[@]}"; do
-  mkdir -p "$base_dir/$subdir"
+  mkdir -p "/root/$base_dir/$subdir"
 done
 
 cat << EOF > /root/scripts/create_dashboard_cm.py
