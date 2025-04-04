@@ -18,3 +18,6 @@ kubectl apply -f /root/scripts/pre-files/aos_publisher_service_monitor.yaml --co
 kubectl apply -f /root/scripts/pre-files/load_balancer.yaml --context=$CLUSTER_ARN
 
 helm install -f /root/scripts/pre-files/cloudwatch_exporter.yaml cloudwatch-exporter prometheus-community/prometheus-cloudwatch-exporter --kube-context=arn:aws:eks:us-west-2:353502843997:cluster/ktd-ncs-3apr  -n monitoring --version 0.25.3
+
+GRAFANA_LINK=$(kubectl get svc grafana-lb-service -n monitoring -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+echo "GRAFANA_LINK=http://$GRAFANA_LINK:3000"
