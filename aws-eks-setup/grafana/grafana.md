@@ -5,5 +5,5 @@
 `echo $GRAFANA_LINK`{{exec}}  
 
 ### CREDENTIALS FOR ACCESSING GRAFANA   
-####USERNAME: admin
-####PASSWORD: prom-operator
+#### USERNAME: admin
+#### PASSWORD: prom-operator
