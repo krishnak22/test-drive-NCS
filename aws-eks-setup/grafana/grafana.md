@@ -2,4 +2,8 @@
 
 `source eks_inputs.env`{{exec}}  
 
-`echo $GRAFANA_LINK`{{exec}}
+`echo $GRAFANA_LINK`{{exec}}  
+
+### CREDENTIALS FOR ACCESSING GRAFANA   
+####USERNAME: admin
+####PASSWORD: prom-operator
