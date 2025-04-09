@@ -68,7 +68,8 @@
       },
       {
         "title": "Deployment-2",
-        "text": "step12.2/bf_operator.md"
+        "text": "step12.2/bf_operator.md",
+	"background": "step12.2/grafana_pre.sh"
       },
       {
         "title": "Deployment-3",
@@ -77,8 +78,7 @@
       },
       {
         "title": "Deployment-4",
-        "text": "step12.4/bf_infra.md",
-	"background": "step12.4/background.sh"
+        "text": "step12.4/bf_infra.md"
       },
       {
         "title": "Deployment-5",

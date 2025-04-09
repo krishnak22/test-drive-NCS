@@ -3,7 +3,7 @@ source eks_inputs.env
 echo "SERVICE_ACCOUNT_NAME=ncs-infra-sa-new-2" >>/root/eks_inputs.env
 echo "SERVICE_ACCOUNT_NAMESPACE=ncs-infra-deployment-operator-system" >> /root/eks_inputs.env
 
-aws s3 cp s3://cn-aos-td-grafana-setup/ncs_dashboard.json /root/scripts/json-files
+aws s3 cp s3://cn-aos-td-grafana-setup/ncs_dashboard.json /root/scripts/json-files/ncs_dashboard.json
 
 source eks_inputs.env
 SA_ROLE_NAME=$(kubectl get sa "$SERVICE_ACCOUNT_NAME" -n "$SERVICE_ACCOUNT_NAMESPACE" -o jsonpath='{.metadata.annotations.eks\.amazonaws\.com/role-arn}' | awk -F'/' '{print $NF}')
