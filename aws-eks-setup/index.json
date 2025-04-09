@@ -96,6 +96,10 @@
       {
         "title": "NXCTL COMMANDS",
         "text": "step15.2/nxctl_training.md"
+      },
+      {
+	"title": "GRAFANA SETUP",
+	"foreground": "grafana/foreground.sh"
       }, 
       {
         "title": "App Deployment: 1 (Storage Class Creation)",
