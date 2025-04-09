@@ -13,7 +13,7 @@ cat <<EOF > trust_policy.json
       "Condition": {
         "StringEquals": {
           "$OIDC_PROVIDER:sub": "system:serviceaccount:monitoring:cloudwatch-exporter-sa",
-          "$OIDC_PROVIDER_URL_FORMATTED:aud": "sts.amazonaws.com"
+          "$OIDC_PROVIDER:aud": "sts.amazonaws.com"
         }
       }
     }
