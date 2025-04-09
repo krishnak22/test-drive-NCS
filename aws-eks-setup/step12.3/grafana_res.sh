@@ -43,7 +43,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-type: external
     service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
     service.beta.kubernetes.io/aws-load-balancer-subnets: $LB_SUBNET_ID
-    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: { \primary_owner\=\$PRIMARY_OWNER\, \ncs-cluster-name\=\$NCS_CLUSTER_NAME\ }
+    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: "primary_owner=$PRIMARY_OWNER,ncs-cluster-name=$NCS_CLUSTER_NAME"
 spec:
   type: LoadBalancer
   ports:
@@ -54,7 +54,7 @@ spec:
   selector:
     app.kubernetes.io/name: grafana
   loadBalancerSourceRanges:
-    - $USER_IP
+    - $USER_IP/32
 EOF
 
 cat << EOF > /root/scripts/pre-files/custom_exporter_service_monitor.yaml
@@ -128,7 +128,7 @@ resources:
     cpu: "200m"
     memory: "4Gi"
 aws:
-  role: $CW_ROLE_ARN
+  role: $CW_ROLE
 config: |
   region: $REGION
   period_seconds: 300
@@ -306,7 +306,7 @@ config: |
       aws_statistics: [Average]
 serviceAccount:
   annotations:
-    eks.amazonaws.com/role-arn: $CW_ROLE_ARN
+    eks.amazonaws.com/role-arn: $CW_ROLE
   name: "cloudwatch-exporter-sa"
   namespace: "monitoring"
 serviceMonitor:
