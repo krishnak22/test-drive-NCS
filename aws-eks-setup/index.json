@@ -47,24 +47,12 @@
         "text": "step12.4/bf_infra.md"
       },
       {
-        "title": "Deployment-5",
-        "text": "step12.5/ncs-cr.md"
-      },
-      {
-        "title": "CSI Installation",
-        "foreground": "step14/csi_installation.sh"
-      },
-      {
-        "title": "NXCTL Installation",
-        "text": "step15.1/nxctl_intro.md",
-        "foreground": "step15.1/nxctl_installation_foreground.sh"
-      },
-      {
         "title": "NXCTL COMMANDS",
         "text": "step15.2/nxctl_training.md"
       },
       {
 	"title": "GRAFANA SETUP",
+	"text": "grafana/grafana.md",
 	"foreground": "grafana/foreground.sh"
       }, 
       {
