@@ -1,7 +1,6 @@
 base_dir="scripts"
-subdirs=("yaml-files" "json-files" "pre-files")
+subdirs=("yaml-files" "pre-files")
 
-mkdir -p "/root/$base_dir"
 
 for subdir in "${subdirs[@]}"; do
   mkdir -p "/root/$base_dir/$subdir"
