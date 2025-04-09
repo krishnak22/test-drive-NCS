@@ -1,4 +1,5 @@
-### After the script is executed completely, link to access grafana will be available on the screen and whenever in future you would require the grafana link just run:
+### Once the script has been successfully executed, the Grafana access link will be displayed on the screen. In the future, if you need to access the Grafana link again, simply run the following command:
 
-`source eks_inputs.env`{{exec}}
+`source eks_inputs.env`{{exec}}  
+
 `echo $GRAFANA_LINK`{{exec}}
