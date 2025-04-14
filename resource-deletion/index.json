@@ -1,0 +1,56 @@
+{
+  "title": "test-drive-NCS",
+  "description": "A Killercoda scenario to install AWS CLI & eksctl, configure AWS, and assume a role.",
+  "details": {
+    "intro": {
+      "title": "Introduction",
+      "text": "intro/intro.md"
+    },
+    "steps": [
+      {
+        "title": "Install AWS CLI & eksctl",
+        "text": "step1/step1.md",
+        "foreground": "step1/foreground.sh",
+        "background": "step1/background.sh"
+      },
+      {
+        "title": "Set Up AWS Environment",
+        "text": "step2/step2.md"
+      },
+      {
+        "title": "Assume an IAM Role",
+        "text": "step3/step3.md",
+        "foreground": "step3/foreground.sh"
+      },
+      {
+	"title": "Creating Input File",
+	"text": "step4/step4.md",
+	"background": "step4/background.sh"
+      },
+      {
+	"title": "Updating Context",
+	"foreground": "step5/foreground.sh"
+      },
+      {
+	"title": "Deletion",
+	"foreground": "step6/foreground.sh"
+      },
+      {
+	"title": "Deletion",
+	"foreground": "step7/foreground.sh"
+      },
+      {
+	"title": "Deletion",
+	"foreground": "step8/foreground.sh"
+      }
+    ],
+    "finish": {
+      "title": "Completion",
+      "text": "finish/finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}  		
+
