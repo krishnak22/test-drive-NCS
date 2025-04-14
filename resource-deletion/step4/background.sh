@@ -1,3 +1,4 @@
+#!/bin/bash
 cat << 'EOF' > clusterInputs.sh
 ENV_FILE="eks_inputs.env"
 
@@ -41,8 +42,15 @@ while true; do
         echo "Error: '$REGION' is not a valid AWS region."
         continue
     fi
-    echo "CLUSTER_NAME=$CLUSTER_NAME" > "$ENV_FILE"
+
+    # Step 1.3: Write to ENV_FILE
+    echo "CLUSTER_NAME=$CLUSTER_NAME" >> "$ENV_FILE"
     echo "REGION=$REGION" >> "$ENV_FILE"
+
+    # Break out of loop since we have valid input
+    echo "Configuration saved to $ENV_FILE."
+    break
 done
 
-chmod + chmod +x clusterInputs.sh
+EOF
+chmod +x clusterInputs.sh

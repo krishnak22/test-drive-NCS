@@ -39,4 +39,4 @@ kubectl delete workernode $CLUSTER_NAME-wn -n ncs-infra-deployment-operator-syst
 kubectl delete CustomResourceDefinition ncsinfras.ncs.nutanix.com --ignore-not-found=true
 
 source eks_inputs.env
-eksctl delete iamserviceaccount  --cluster $CLUSTER_NAME  --region $REGION --name ncs-infra-sa-new-2 --namespace ncs-infra-deployment-operator-system --ignore-not-found=true
+eksctl delete iamserviceaccount  --cluster $CLUSTER_NAME  --region $REGION --name ncs-infra-sa-new-2 --namespace ncs-infra-deployment-operator-system 
