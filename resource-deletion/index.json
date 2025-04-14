@@ -1,6 +1,6 @@
 {
-  "title": "test-drive-NCS",
-  "description": "A Killercoda scenario to install AWS CLI & eksctl, configure AWS, and assume a role.",
+  "title": "Resource-Deletion",
+  "description": "A Killercoda scenario to delete the Testdrive-CN-AOS resources in case of err.",
   "details": {
     "intro": {
       "title": "Introduction",
