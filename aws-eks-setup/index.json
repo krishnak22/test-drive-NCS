@@ -16,7 +16,7 @@
       {
         "title": "Set Up AWS Environment",
         "text": "step2/step2.md",
-	"backgorund": "step2.background.sh"
+	"backgorund": "step2/background.sh"
       },
       {
         "title": "Assume an IAM Role",
