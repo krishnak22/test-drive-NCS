@@ -54,6 +54,11 @@
         "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
         "foreground": "step10.2/attach_policy.sh"
       },
+      {
+        "title": "Taking Input for Brownfield Operator",
+        "text": "step11/step11.md",
+        "background": "step11/bf_op_inputs.sh"
+      },
       { 
         "title": "Deployment-1",
         "text": "step12.1/cn_aos_operator.md",
