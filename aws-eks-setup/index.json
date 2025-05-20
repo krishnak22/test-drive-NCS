@@ -15,12 +15,14 @@
       },
       {
         "title": "Set Up AWS Environment",
-        "text": "step2/step2.md"
+        "text": "step2/step2.md",
+	"backgorund": "step2.background.sh"
       },
       {
         "title": "Assume an IAM Role",
         "text": "step3/step3.md",
-        "foreground": "step3/foreground.sh"
+        "foreground": "step3/foreground.sh",
+	"background": "step3/background.sh"
       },
       {
         "title": "Creating Input File",
