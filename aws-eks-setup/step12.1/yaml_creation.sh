@@ -707,6 +707,7 @@ spec:
     aws:
       tags:
         primary_owner: $PRIMARY_OWNER
+	platform: KILLERCODA
       instanceType: $INSTANCE_TYPE
       amiType: AL2_x86_64
       amiReleaseVersion: 1.30.7-20250103
@@ -744,6 +745,7 @@ spec:
     aws:
       tags:
         primary_owner: $PRIMARY_OWNER
+	platform: KILLERCODA
   version: 1.0.0-5831 
 EOF
 
