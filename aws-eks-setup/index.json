@@ -48,8 +48,7 @@
         "foreground": "step9/oidc.sh"
       },
       {
-        "title": "Creating Service Account",
-        "foreground": "step10.1/sa_creation.sh"
+        "title": "Creating Service Account"
       },
       {
         "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
