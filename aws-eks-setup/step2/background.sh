@@ -1,3 +1,3 @@
-touch ~/start.py
+touch root/start.py
 apt insatll -y rpm
-touch ~/end.py
+touch root/end.py
