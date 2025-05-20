@@ -16,9 +16,5 @@ tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
 sudo mv /tmp/eksctl /usr/local/bin
 
-apt install -y rpm
-
-apt install -y python3-ruamel.yaml
-
 # Mark installation as done
 touch /opt/install_done
