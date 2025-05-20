@@ -29,6 +29,35 @@
         "text": "step4/step4.md",
         "background": "step4/background.sh"
       },
+      {
+        "title": "Create EKS Cluster",
+        "foreground": "step5/cluster_creation.sh"
+      },
+      {
+        "title": "Updating kubeconfig",
+        "foreground": "step6/kubeconifg_update.sh"
+      },
+      {
+        "title": "Installing Calico",
+        "foreground": "step7/calico_installation.sh",
+        "background": "step7/bf_policy_creation.sh"
+      },
+      {
+        "title": "Nodegroup Creation",
+        "foreground": "step8/nodegroup_creation.sh"
+      },
+      {
+        "title": "OIDC",
+        "foreground": "step9/oidc.sh"
+      },
+      {
+        "title": "Creating Service Account",
+        "foreground": "step10.1/sa_creation.sh"
+      },
+      {
+        "title": "ATTACHING POLICIES TO THE SERVICE ACCOUNT ROLE",
+        "foreground": "step10.2/attach_policy.sh"
+      },
       { 
         "title": "Deployment-1",
         "text": "step12.1/cn_aos_operator.md",
