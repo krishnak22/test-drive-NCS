@@ -1,0 +1,1 @@
+apt insatll -y rpm
