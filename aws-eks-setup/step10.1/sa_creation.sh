@@ -29,4 +29,4 @@ CW_ROLE_ARN=$(aws iam get-role --role-name "$CLUSTER_NAME-cw-grafana-role" --reg
 echo "CW_ROLE=$CW_ROLE_ARN" >> /root/eks_inputs.env
 CREATION_TIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 source eks_inputs.env
-eksctl create iamserviceaccount --cluster "$CLUSTER_NAME" --region "$REGION" --name ncs-infra-sa-new-2 --namespace ncs-infra-deployment-operator-system --attach-policy-arn arn:aws:iam::353502843997:policy/test-drive-ncs-bf-op-policy-1 --tags kc-cluster-name="$CLUSTER_NAME",creation-time="$CREATION_TIME" --approve
+eksctl create iamserviceaccount --cluster "$CLUSTER_NAME" --region "$REGION" --name ncs-infra-sa-new-2 --namespace ncs-infra-deployment-operator-system --attach-policy-arn arn:aws:iam::353502843997:policy/test-drive-ncs-bf-op-policy-1 --approve
